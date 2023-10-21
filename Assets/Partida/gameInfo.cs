@@ -15,18 +15,21 @@ public class gameInfo : MonoBehaviour //Make non monobehabiour
     const int NUM_LETTERS = 26;
 
     string solution; //Solution frase
-    string solutionLetterTypes; //Info about solution letters (U uppercase, L lowercase, S special character)
+    //string solutionLetterTypes; //Info about solution letters (U uppercase, L lowercase, S special character)
+    string cleanSolution;
     letterState[] letters;
 
     private void Start()
     {
+        solution = "";
+        cleanSolution = "";
+        
         createGame();
 
-        //letters[6] = letterState.CORRECT; //TODO: ERASE THIS
-        //letters[0] = letterState.CORRECT; //TODO: ERASE THIS
+        //letters[4] = letterState.CORRECT; //TODO: ERASE THIS
 
         Debug.Log("Solution: " + solution);
-        Debug.Log("Character types: " + solutionLetterTypes);
+        Debug.Log("Clean Solution: " + cleanSolution);
         Debug.Log("Current board: " + getState());
         Debug.Log("Letters left: " + getLettersLeft());
     }
@@ -42,41 +45,40 @@ public class gameInfo : MonoBehaviour //Make non monobehabiour
 
         //Get Solution
         solution = "Un de cada quatre habitatges de Gaza, destruït o malmès pels bombardejos d'Israel"; //TODO: agafar solution de base de dades/doc
-        
-        //Create solutionLetterTypes
-        for (int l = 0; l < solution.Length; l++)
+
+        string lowerSolution = solution.ToLower();
+        cleanSolution = "";
+        foreach (char l in lowerSolution)
         {
-            int lnum = (int)solution[l];
-            if (lnum >= 65 && lnum <= 90) solutionLetterTypes += "U";
-            else if (lnum >= 97 && lnum <= 122) solutionLetterTypes += "L";
-            else solutionLetterTypes += "S";
+            if (l == 'ñ') cleanSolution += 'n';
+            else if ("áàäâ".Contains(l)) cleanSolution += 'a';
+            else if ("éèëê".Contains(l)) cleanSolution += 'e';
+            else if ("íìïî".Contains(l)) cleanSolution += 'i';
+            else if ("óòöô".Contains(l)) cleanSolution += 'o';
+            else if ("úùüû".Contains(l)) cleanSolution += 'u';
+            else cleanSolution += l;
         }
     }
 
     string getState()
     {
         string result = "";
-        string sol = solution.ToLower();
-        for (int l = 0; l < sol.Length; l++) {
-            if(solutionLetterTypes[l] == 'S')
+        for (int l = 0; l < cleanSolution.Length; l++) {
+            int ascii = (int)cleanSolution[l];
+            if (ascii >= 97 && ascii <= 122)
             {
-                result += sol[l];
-            }
-            else if(letters[getLetterNumber(sol[l])] == letterState.CORRECT)
-            {
-                if(solutionLetterTypes[l] == 'U')
+                if (letters[getLetterNumber(cleanSolution[l])] == letterState.CORRECT)
                 {
-                    //Make letter Uppercase
-                    result += (char)((int)sol[l] -32);
+                    result += solution[l];
                 }
                 else
                 {
-                    result += sol[l];
+                    result += "_";
                 }
             }
             else
             {
-                result += "_";
+                result += solution[l];
             }
         }
 
