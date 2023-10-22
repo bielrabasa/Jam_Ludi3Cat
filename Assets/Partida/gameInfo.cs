@@ -27,13 +27,8 @@ public class gameInfo : MonoBehaviour
         shuffledSymbols = "";
 
         createGame();
-        //checkLetter('u', 0);
-        //letters[4] = letterState.CORRECT; //TODO: ERASE THIS
-        //letters[7] = letterState.CORRECT; //TODO: ERASE THIS
-        //letters[0] = letterState.CORRECT; //TODO: ERASE THIS
-        //letters[15] = letterState.CORRECT; //TODO: ERASE THIS
-        //letters[20] = letterState.CORRECT; //TODO: ERASE THIS
 
+        //TODO: Erase this
         Debug.Log("Symbols: " + SYMBOLS);
         Debug.Log("Symbols: " + shuffledSymbols);
         Debug.Log("Solution: " + solution);
@@ -52,7 +47,8 @@ public class gameInfo : MonoBehaviour
         }
 
         //Get Solution
-        solution = "Un de cada quatre habitatges de Gaza, destruït o malmès pels bombardejos d'Israel"; //TODO: agafar solution de base de dades/doc
+        NewsAsset news = loadNews.getNews(8);
+        solution = news.Title;
 
         CleanSolution();
 
@@ -112,6 +108,7 @@ public class gameInfo : MonoBehaviour
 
     public uint getLettersLeft()
     {
+        //TODO: Comprovar lletres que no hi són a la solució
         uint n = 26;
         foreach(letterState l in letters)
         {
