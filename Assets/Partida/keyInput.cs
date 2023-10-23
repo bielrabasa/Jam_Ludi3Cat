@@ -52,6 +52,10 @@ public class keyInput : MonoBehaviour
             //TODO: Send a message: "incorrect letter"
             Debug.Log("IncorrectLetter");
         }
+
+        GameObject t = GameObject.Find(letter.ToString());
+
+        t.GetComponent<VirtualKeyBoard>().ChangeColor();
     }
 
     //Select next possible position
