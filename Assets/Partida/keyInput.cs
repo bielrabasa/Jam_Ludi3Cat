@@ -11,7 +11,7 @@ public class keyInput : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<gameInfo>();
-        lookingPos = 0;
+        lookingPos = -1; //-1 for not focused
         maxPos = gameManager.getState().Length;
 
         UpdatePos();

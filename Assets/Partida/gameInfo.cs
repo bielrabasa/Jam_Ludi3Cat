@@ -51,7 +51,7 @@ public class gameInfo : MonoBehaviour
         }
 
         //Get Solution
-        NewsAsset news = loadNews.getNews(8);
+        NewsAsset news = loadNews.getNews(5); //TODO: Carregar notícia aleatòria
         solution = news.Title;
 
         CleanSolution();
