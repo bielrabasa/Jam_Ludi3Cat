@@ -6,12 +6,13 @@ public enum letterState
 {
     NONE,
     CORRECT,
-    POSSIBLE
+    POSSIBLE,
+    NOTAPPEARS
 }
 
 public class gameInfo : MonoBehaviour
 {
-    const int NUM_LETTERS = 26;
+    public static int NUM_LETTERS = 26;
     const string SYMBOLS = "★✤✿♠♣♥♦☁☀▶∎☻◈〓✚⦿⊕☗✈◐☂♜♞♚♛☎";
 
     string solution;        //Hóla qüe, tAL?
@@ -20,14 +21,17 @@ public class gameInfo : MonoBehaviour
     
     public letterState[] letters;
 
-    private void Start()
+    private void Awake()
     {
         solution = "";
         cleanSolution = "";
         shuffledSymbols = "";
 
         createGame();
+    }
 
+    private void Start()
+    {
         //TODO: Erase this
         Debug.Log("Symbols: " + SYMBOLS);
         Debug.Log("Symbols: " + shuffledSymbols);
@@ -53,14 +57,27 @@ public class gameInfo : MonoBehaviour
         CleanSolution();
 
         ShuffleSymbols(3);
+
+        //TODO: Marcar com a correctes, les lletres que no surten a la frase
     }
 
-    string getState()
+    public uint getLettersLeft()
+    {
+        if (solution == getState()) return 0;
+        
+        uint n = 26;
+        foreach (letterState l in letters)
+        {
+            if (l == letterState.CORRECT || l == letterState.NOTAPPEARS) n--;
+        }
+        return n;
+    }
+
+    public string getState()
     {
         string result = "";
         for (int l = 0; l < cleanSolution.Length; l++) {
-            int ascii = (int)cleanSolution[l];
-            if (ascii >= 97 && ascii <= 122)
+            if (isLetter(cleanSolution[l]))
             {
                 if (letters[getLetterNumber(cleanSolution[l])] == letterState.CORRECT)
                 {
@@ -80,9 +97,20 @@ public class gameInfo : MonoBehaviour
         return result;
     }
 
+    public bool isLetter(char c)
+    {
+        return (int)c >= 97 && (int)c <= 122;
+    }
+
+    public bool positionIsEmpty(int p)
+    {
+        //If is letter and position is not correct, return true
+        return isLetter(cleanSolution[p]) && letters[getLetterNumber(cleanSolution[p])] != letterState.CORRECT;
+    }
+
     public bool checkLetter(char c, int pos)
     {
-        if(pos >= NUM_LETTERS || pos < 0)
+        if(pos >= cleanSolution.Length || pos < 0)
         {
             Debug.LogError("Letter checking failed: position out of bounds.");
             return false;
@@ -95,26 +123,22 @@ public class gameInfo : MonoBehaviour
             return true;
         }
 
-        //Not correct but in other place
-        if (cleanSolution.Contains(c))
-        {
-            letters[getLetterNumber(c)] = letterState.POSSIBLE;
+        //Not correct
+        if (letters[getLetterNumber(c)] == letterState.NONE)
+        { 
+            if (cleanSolution.Contains(c))
+            {
+                letters[getLetterNumber(c)] = letterState.POSSIBLE;
+            }
+            else
+            {
+                letters[getLetterNumber(c)] = letterState.NOTAPPEARS;
+            }
         }
 
         //TODO: Afegir la lletra comprovada a la llista de lletres comprovades en aquesta posició.
 
         return false;
-    }
-
-    public uint getLettersLeft()
-    {
-        //TODO: Comprovar lletres que no hi són a la solució
-        uint n = 26;
-        foreach(letterState l in letters)
-        {
-            if (l == letterState.CORRECT) n--;
-        }
-        return n;
     }
 
     int getLetterNumber(char c)
