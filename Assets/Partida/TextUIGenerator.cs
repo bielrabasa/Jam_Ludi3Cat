@@ -8,7 +8,7 @@ public class TextUIGenerator : MonoBehaviour
     // Start is called before the first frame update
    [SerializeField] GameObject buttonPrefab;
     public GameObject canvas;
-    gameInfo le = FindObjectOfType<gameInfo>();
+ 
 
     public ArrayList[] letterArray;
 
