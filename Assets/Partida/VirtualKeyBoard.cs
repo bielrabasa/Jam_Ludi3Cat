@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class VirtualKeyBoard : MonoBehaviour
 {
-    keyInput keyI;
     public void InputKey()
     {
-        //keyI.CheckLetter(this.gameObject.name);
+        string name = this.name;
+
+        char aux = char.Parse(name);
+
+        FindObjectOfType<keyInput>().CheckLetter(aux);
     }
-
-
 }
