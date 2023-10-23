@@ -37,7 +37,7 @@ public class keyInput : MonoBehaviour
         Debug.Log("Pos: " + lookingPos + "\tLetters left: " + gameManager.getLettersLeft() + "\n" + gameManager.getState());
     }
 
-    void CheckLetter(char letter)
+    public void CheckLetter(char letter)
     {
         if(gameManager.checkLetter(letter, lookingPos))
         {
