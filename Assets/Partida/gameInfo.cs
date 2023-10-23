@@ -141,7 +141,7 @@ public class gameInfo : MonoBehaviour
         return false;
     }
 
-    int getLetterNumber(char c)
+    public int getLetterNumber(char c)
     {     
         return ((int)c - 19) % NUM_LETTERS;
     }
