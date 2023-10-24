@@ -33,5 +33,21 @@ public class TextUIGenerator : MonoBehaviour
         }
     }
 
-   
+    public void UpdateFrase()
+    {
+        gameInfo gI;
+
+        gI = FindObjectOfType<gameInfo>();
+
+        string textSymbol = gI.getState();
+
+        for (int i = 0; i < gI.cleanSolution.Length; i++)
+        {
+            //Agafar tots els buttons que imprimeixen la frase, 1 per 1
+            //textButton = button.GetComponentInChildren<Text>();
+            textButton.text = textSymbol[i].ToString();
+        }
+    }
+
+
 }
