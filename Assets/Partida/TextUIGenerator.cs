@@ -10,7 +10,7 @@ public class TextUIGenerator : MonoBehaviour
    [SerializeField] GameObject buttonPrefab;
     public GameObject canvas;
 
-    [SerializeField] TMP_Text textButton;
+    [SerializeField] Text textButton;
 
     //public ArrayList[] letterArray;
 
@@ -20,16 +20,16 @@ public class TextUIGenerator : MonoBehaviour
 
         gI = FindObjectOfType<gameInfo>();
 
-        //letterArray = new ArrayList[23];
+        string textSymbol = gI.getState();
 
         for (int i = 0; i < gI.cleanSolution.Length; i++)
         {
             GameObject button = (GameObject)Instantiate(buttonPrefab);
             button.transform.parent = canvas.transform;
             button.transform.position = new Vector2(20 + i*30, 200);
-            textButton = button.GetComponentInChildren<TMP_Text>();
+            textButton = button.GetComponentInChildren<Text>();
             //sha de cambiar per els simbols
-            textButton.text = i.ToString();
+            textButton.text = textSymbol[i].ToString();
         }
     }
 
