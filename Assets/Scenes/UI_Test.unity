@@ -435,7 +435,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74545670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74545672}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74545670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +662,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 226831517}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 226831519}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &226831517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +889,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 256514130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 256514132}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &256514130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1275,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 360570601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 360570603}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &360570601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1422,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 375985714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 375985716}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &375985714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,7 +1696,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 474031602}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 474031604}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &474031602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2053,7 +2125,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684019417}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 684019419}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &684019417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,6 +2481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fc05aaff1ca7e4bbed6f2f9abec70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cleanSolution: 
   letters: 
 --- !u!4 &828019269
 Transform:
@@ -2737,7 +2822,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 931341673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 931341675}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &931341673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3094,7 +3191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1200922886}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1200922888}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1200922886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3389,7 +3498,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1220317944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1220317946}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1220317944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3524,7 +3645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1232820415}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1232820417}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232820415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,7 +3993,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1378401377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1378401379}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1378401377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4142,7 +4287,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1408774013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1408774015}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1408774013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,7 +4514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1437241165}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1437241167}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1437241165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4492,7 +4661,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1513562718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1513562720}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1513562718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4738,6 +4919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 2487770531274573487, guid: 6caab5fff3206cc48a3a1d930900b5cf, type: 3}
   canvas: {fileID: 749512139}
+  textButton: {fileID: 0}
 --- !u!4 &1565242914
 Transform:
   m_ObjectHideFlags: 0
@@ -4837,7 +5019,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1636350252}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1636350254}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1636350252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5132,7 +5326,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1680428739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1680428741}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1680428739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5267,7 +5473,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1681202533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1681202535}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1681202533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5402,7 +5620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1718725749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1718725751}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1718725749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,7 +5767,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1731739757}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1731739759}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1731739757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5672,7 +5914,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772756777}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1772756779}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1772756777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5887,7 +6141,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890609406}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1890609408}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1890609406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6258,7 +6524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1966052781}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966052783}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1966052781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6517,7 +6795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2096574505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2096574507}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2096574505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6892,7 +7182,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2140443365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140443367}
+        m_TargetAssemblyTypeName: VirtualKeyBoard, Assembly-CSharp
+        m_MethodName: InputKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2140443365
 MonoBehaviour:
   m_ObjectHideFlags: 0

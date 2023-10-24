@@ -16,7 +16,7 @@ public class gameInfo : MonoBehaviour
     const string SYMBOLS = "★✤✿♠♣♥♦☁☀▶∎☻◈〓✚⦿⊕☗✈◐☂♜♞♚♛☎";
 
     string solution;        //Hóla qüe, tAL?
-    string cleanSolution;   //hola que, tal?
+    public string cleanSolution;   //hola que, tal?
     string shuffledSymbols;
     
     public letterState[] letters;
