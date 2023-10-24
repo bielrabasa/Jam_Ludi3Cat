@@ -22,7 +22,7 @@ public class TextUIGenerator : MonoBehaviour
 
         //letterArray = new ArrayList[23];
 
-        for (int i = 0; i < gI.getLettersLeft(); i++)
+        for (int i = 0; i < gI.cleanSolution.Length; i++)
         {
             GameObject button = (GameObject)Instantiate(buttonPrefab);
             button.transform.parent = canvas.transform;
