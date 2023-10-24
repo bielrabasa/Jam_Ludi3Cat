@@ -5,12 +5,15 @@ using UnityEngine;
 public class keyInput : MonoBehaviour
 {
     gameInfo gameManager;
+    TextUIGenerator textUIG;
     int lookingPos;
     int maxPos;
 
     void Start()
     {
         gameManager = FindObjectOfType<gameInfo>();
+        textUIG = FindObjectOfType<TextUIGenerator>();
+
         lookingPos = -1; //-1 for not focused
         maxPos = gameManager.getState().Length;
 
@@ -32,8 +35,10 @@ public class keyInput : MonoBehaviour
 
     void UpdateScreen()
     {
+
         //TODO: amb el string gameManager.getState() imprimir les lletres per pantalla
         //TODO: amb lookingPos, marcar el quadre seleccionat d'alguna manera
+        textUIG.UpdateFrase();
         Debug.Log("Pos: " + lookingPos + "\tLetters left: " + gameManager.getLettersLeft() + "\n" + gameManager.getState());
     }
 
@@ -45,6 +50,8 @@ public class keyInput : MonoBehaviour
 
             UpdatePos();
             UpdateScreen();
+
+
         }
         else
         {

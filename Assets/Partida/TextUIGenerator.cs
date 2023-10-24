@@ -10,9 +10,9 @@ public class TextUIGenerator : MonoBehaviour
    [SerializeField] GameObject buttonPrefab;
     public GameObject canvas;
 
-    [SerializeField] Text textButton;
+    Text textButton;
 
-    //public ArrayList[] letterArray;
+    GameObject[] listOfLetters;
 
     public void GenerateFrase()
     {
@@ -22,14 +22,16 @@ public class TextUIGenerator : MonoBehaviour
 
         string textSymbol = gI.getState();
 
+        listOfLetters = new GameObject[gI.cleanSolution.Length];
+
         for (int i = 0; i < gI.cleanSolution.Length; i++)
         {
             GameObject button = (GameObject)Instantiate(buttonPrefab);
             button.transform.parent = canvas.transform;
             button.transform.position = new Vector2(20 + i*30, 200);
             textButton = button.GetComponentInChildren<Text>();
-            //sha de cambiar per els simbols
             textButton.text = textSymbol[i].ToString();
+            listOfLetters[i] = button as GameObject;
         }
     }
 
@@ -41,13 +43,13 @@ public class TextUIGenerator : MonoBehaviour
 
         string textSymbol = gI.getState();
 
-        for (int i = 0; i < gI.cleanSolution.Length; i++)
+        int i = 0;
+
+        foreach(GameObject o in listOfLetters)
         {
-            //Agafar tots els buttons que imprimeixen la frase, 1 per 1
-            //textButton = button.GetComponentInChildren<Text>();
+            textButton = o.GetComponentInChildren<Text>();
             textButton.text = textSymbol[i].ToString();
+            i++;
         }
     }
-
-
 }
