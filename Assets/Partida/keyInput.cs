@@ -6,7 +6,7 @@ public class keyInput : MonoBehaviour
 {
     gameInfo gameManager;
     TextUIGenerator textUIG;
-    int lookingPos;
+    public int lookingPos;
     int maxPos;
 
     void Start()
