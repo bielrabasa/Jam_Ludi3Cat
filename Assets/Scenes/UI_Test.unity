@@ -6695,6 +6695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1d5890cade76b4c8400bacaa2a4a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookingPos: 0
 --- !u!4 &2011436127
 Transform:
   m_ObjectHideFlags: 0
@@ -7255,6 +7256,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1565242913}
+    - target: {fileID: 2487770531274573486, guid: 6caab5fff3206cc48a3a1d930900b5cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenerateFrase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487770531274573486, guid: 6caab5fff3206cc48a3a1d930900b5cf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TextUIGenerator, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2487770531274573487, guid: 6caab5fff3206cc48a3a1d930900b5cf, type: 3}
       propertyPath: m_Name
       value: Button

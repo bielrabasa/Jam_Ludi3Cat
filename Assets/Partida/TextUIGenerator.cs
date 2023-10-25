@@ -31,8 +31,6 @@ public class TextUIGenerator : MonoBehaviour
             button.transform.position = new Vector2(20 + i*30, 200);
             textButton = button.GetComponentInChildren<Text>();
             textButton.text = textSymbol[i].ToString();
-            Button btn = button.GetComponent<Button>();
-            btn.GetComponent<Button>().onClick.AddListener(() => { SetPos(); });
             listOfLetters[i] = button as GameObject;
         }
 
@@ -65,20 +63,24 @@ public class TextUIGenerator : MonoBehaviour
             i++;
         }
     }
-    void SetPos()
+    public void SetPos(GameObject me)
     {
         keyInput kI;
 
         kI = FindObjectOfType<keyInput>();
 
+
         int i = 0;
         foreach (GameObject o in listOfLetters)
         {
-            i++;
-            if(o)
+            if(o == me)
             {
+                Debug.Log("HOLA");
+
                 kI.lookingPos = i;
             }
+            i++;
+
         }
     }
 }
