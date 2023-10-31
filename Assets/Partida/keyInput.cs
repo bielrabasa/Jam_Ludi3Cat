@@ -62,6 +62,7 @@ public class keyInput : MonoBehaviour
 
         GameObject t = GameObject.Find(letter.ToString());
 
+        t.GetComponent<VirtualKeyBoard>().AddLetterPress();
         t.GetComponent<VirtualKeyBoard>().ChangeColor();
     }
 
