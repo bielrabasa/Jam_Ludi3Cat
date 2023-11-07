@@ -16,7 +16,6 @@ public class VirtualKeyBoard : MonoBehaviour
     public void AddLetterPress()
     {
         ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
-
         cSelect.clickedButtons.Add(this.gameObject);
     }
 

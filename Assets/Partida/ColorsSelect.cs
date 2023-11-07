@@ -16,7 +16,9 @@ public class ColorsSelect : MonoBehaviour
     
     public void DaltonicsOn()
     {
-        Toggle toggle = this.GetComponentInParent<Toggle>();
+        GameObject go = GameObject.Find("DaltonicsToggle");
+
+        Toggle toggle = go.GetComponent<Toggle>();
 
         if (toggle.isOn)
         {
@@ -39,7 +41,9 @@ public class ColorsSelect : MonoBehaviour
 
     public void DarkOn(GameObject backgrounKB)
     {
-        Toggle toggle = this.GetComponentInParent<Toggle>();
+        GameObject go = GameObject.Find("DarkModeToggle");
+
+        Toggle toggle = go.GetComponent<Toggle>();
 
         if (toggle.isOn)
         {
