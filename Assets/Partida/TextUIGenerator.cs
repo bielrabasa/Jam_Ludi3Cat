@@ -13,6 +13,8 @@ public class TextUIGenerator : MonoBehaviour
     Text textButton;
 
     GameObject[] listOfLetters;
+    int aux;
+    int j = 0;
 
     public void GenerateFrase()
     {
@@ -26,12 +28,19 @@ public class TextUIGenerator : MonoBehaviour
 
         for (int i = 0; i < gI.cleanSolution.Length; i++)
         {
+          
             GameObject button = (GameObject)Instantiate(buttonPrefab);
-            button.transform.parent = canvas.transform;
-            button.transform.position = new Vector2(20 + i*30, 200);
+            button.transform.parent = canvas.transform;     
+            button.transform.position = new Vector2(200 + aux*30, 200 - j);
             textButton = button.GetComponentInChildren<Text>();
             textButton.text = textSymbol[i].ToString();
+            if (button.transform.position.x >= 1500 && textButton.text == " ")
+            {
+                j += 60;
+                aux = -1;
+            }
             listOfLetters[i] = button as GameObject;
+            aux++;
         }
 
 
