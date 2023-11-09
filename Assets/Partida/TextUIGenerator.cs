@@ -76,14 +76,9 @@ public class TextUIGenerator : MonoBehaviour
 
     public void UpdateFrase()
     {
-        gameInfo gI;
-
-        gI = FindObjectOfType<gameInfo>();
-
-        string textSymbol = gI.getState();
+        string textSymbol = FindObjectOfType<gameInfo>().getState();
 
         int i = 0;
-
         foreach(GameObject o in listOfLetters)
         {
             textButton = o.GetComponentInChildren<Text>();
@@ -91,24 +86,21 @@ public class TextUIGenerator : MonoBehaviour
             i++;
         }
     }
+
     public void SetPos(GameObject me)
     {
-        keyInput kI;
+        keyInput kI = FindObjectOfType<keyInput>();
 
-        kI = FindObjectOfType<keyInput>();
-
+        //TODO: Change color of the selected
 
         int i = 0;
         foreach (GameObject o in listOfLetters)
         {
             if(o == me)
             {
-                Debug.Log("HOLA");
-
                 kI.lookingPos = i;
             }
             i++;
-
         }
     }
 }

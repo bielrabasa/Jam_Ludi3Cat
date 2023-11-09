@@ -39,6 +39,24 @@ public class gameInfo : MonoBehaviour
         Debug.Log("Letters left: " + getLettersLeft());
     }*/
 
+    //-------------------------------------------------------------------------------------------------------------
+    //
+    // GAME CREATION
+    //
+    //-------------------------------------------------------------------------------------------------------------
+
+    void CreateGame()
+    {
+        InitializeVariables();
+
+        //Get Solution
+        news = loadNews.getNews(-1); // -1 is get a random new from the document
+        solution = news.Title;
+
+        CleanSolution();
+
+        ShuffleSymbols(3);
+    }
     void InitializeVariables()
     {
         //Initialize variables
@@ -55,37 +73,6 @@ public class gameInfo : MonoBehaviour
         {
             letters[i] = 0; //NONE
         }
-    }
-
-    void CreateGame()
-    {
-        InitializeVariables();
-
-        //Get Solution
-        news = loadNews.getNews(-1); // -1 is get a random new from the document
-        solution = news.Title;
-
-        CleanSolution();
-
-        ShuffleSymbols(3);
-    }
-
-    
-
-    public bool isLetter(char c)
-    {
-        return (int)c >= 97 && (int)c <= 122;
-    }
-
-    public bool positionIsEmpty(int p)
-    {
-        //If is letter and position is not correct, return true
-        return isLetter(cleanSolution[p]) && letters[getLetterNumber(cleanSolution[p])] != letterState.CORRECT;
-    }
-
-    public int getLetterNumber(char c)
-    {     
-        return ((int)c - 19) % NUM_LETTERS;
     }
 
     void CleanSolution()
@@ -125,6 +112,30 @@ public class gameInfo : MonoBehaviour
             shuffledSymbols = new string(symbols);
         }
     }
+
+
+    //-------------------------------------------------------------------------------------------------------------
+    //
+    // USEFUL FUNCTIONS
+    //
+    //-------------------------------------------------------------------------------------------------------------
+
+    public bool isLetter(char c)
+    {
+        return (int)c >= 97 && (int)c <= 122;
+    }
+
+    public bool positionIsEmpty(int p)
+    {
+        //If is letter and position is not correct, return true
+        return isLetter(cleanSolution[p]) && letters[getLetterNumber(cleanSolution[p])] != letterState.CORRECT;
+    }
+
+    public int getLetterNumber(char c)
+    {     
+        return ((int)c - 19) % NUM_LETTERS;
+    }
+
 
     //-------------------------------------------------------------------------------------------------------------
     //
@@ -208,5 +219,10 @@ public class gameInfo : MonoBehaviour
         }
 
         return result;
+    }
+
+    public bool Victory()
+    {
+        return getState() == solution;
     }
 }

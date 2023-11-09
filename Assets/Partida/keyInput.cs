@@ -35,11 +35,9 @@ public class keyInput : MonoBehaviour
 
     void UpdateScreen()
     {
-
-        //TODO: amb el string gameManager.getState() imprimir les lletres per pantalla
         //TODO: amb lookingPos, marcar el quadre seleccionat d'alguna manera
         textUIG.UpdateFrase();
-        Debug.Log("Pos: " + lookingPos + "\tLetters left: " + gameManager.getLettersLeft() + "\n" + gameManager.getState());
+        //Debug.Log("Pos: " + lookingPos + "\tLetters left: " + gameManager.getLettersLeft() + "\n" + gameManager.getState());
     }
 
     public void CheckLetter(char letter)
@@ -50,12 +48,9 @@ public class keyInput : MonoBehaviour
 
             UpdatePos();
             UpdateScreen();
-
-
         }
         else
         {
-            
             //TODO: Send a message: "incorrect letter"
             Debug.Log("IncorrectLetter");
         }
@@ -86,9 +81,11 @@ public class keyInput : MonoBehaviour
         Debug.LogError("ERROR, no positions found, something went wrong.");
     }
 
+
+
     void CheckVictory()
     {
-        if(gameManager.getLettersLeft() == 0) Win();
+        if(gameManager.Victory()) Win();
     }
 
     void Win()
