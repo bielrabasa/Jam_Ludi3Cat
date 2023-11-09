@@ -22,6 +22,8 @@ public class TextUIGenerator : MonoBehaviour
     private void Start()
     {
         GenerateFrase();
+        SetLink();
+        SetImage();
     }
 
     public void GenerateFrase()
@@ -135,11 +137,26 @@ public class TextUIGenerator : MonoBehaviour
 
         int nN = FindObjectOfType<gameInfo>().news.NumNews;
 
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
+        screenWidth = Screen.width / 2;
+        screenHeight = Screen.height / 2;
 
         img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
         
-        img.sprite = spritesNews[nN];
+        //img.sprite = spritesNews[nN];
+    }
+
+    public void SetLink()
+    {
+        string lN = FindObjectOfType<gameInfo>().news.NewsLink;
+
+        Text t = GameObject.Find("Link").GetComponentInChildren<Text>();
+
+        t.text = lN;
+    }
+
+    public void OpenLink()
+    {
+        string lN = FindObjectOfType<gameInfo>().news.NewsLink;
+        Application.OpenURL(lN);
     }
 }
