@@ -18,11 +18,12 @@ public class loadNews
         return data.text.Split(new char[] { '\n' });
     }
 
-    public static NewsAsset getNews(int number)
+    public static NewsAsset getNews(int number) // -1 is random row
     {
         string[] file = loadCSV();
-
         NewsAsset n = new NewsAsset();
+
+        if(number == -1) number = Random.Range(0, file.Length); 
 
         if (number < 0 || number >= file.Length)
         {

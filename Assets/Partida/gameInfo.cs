@@ -12,90 +12,65 @@ public enum letterState
 
 public class gameInfo : MonoBehaviour
 {
-    public static int NUM_LETTERS = 26;
+    public int DOCUMENT_ENTRIES = 10;
+    [HideInInspector] public const int NUM_LETTERS = 26;
     const string SYMBOLS = "★✤✿♠♣♥♦☁☀▶∎☻◈〓✚⦿⊕☗✈◐☂♜♞♚♛☎";
 
-    string solution;        //Hóla qüe, tAL?
+    [SerializeField] string solution;        //Hóla qüe, tAL?
     public string cleanSolution;   //hola que, tal?
     string shuffledSymbols;
     
     public letterState[] letters;
+    public int numberOfTries;
+    public int numberOfHints;
+    public NewsAsset news;
 
     private void Awake()
     {
-        solution = "";
-        cleanSolution = "";
-        shuffledSymbols = "";
-
-        createGame();
+        CreateGame();
     }
 
-    private void Start()
-    {
-        //TODO: Erase this
-        Debug.Log("Symbols: " + SYMBOLS);
+    /*private void Start()
+    { 
         Debug.Log("Symbols: " + shuffledSymbols);
         Debug.Log("Solution: " + solution);
         Debug.Log("Clean Solution: " + cleanSolution);
         Debug.Log("Current board: " + getState());
         Debug.Log("Letters left: " + getLettersLeft());
-    }
+    }*/
 
-    void createGame()
+    void InitializeVariables()
     {
+        //Initialize variables
+        solution = "";
+        cleanSolution = "";
+        shuffledSymbols = "";
+        numberOfTries = 0;
+        numberOfHints = 0;
+        news = new NewsAsset();
+
         //Initialize letter array
         letters = new letterState[26];
         for (int i = 0; i < letters.Length; i++)
         {
-            letters[i] = 0;
+            letters[i] = 0; //NONE
         }
+    }
+
+    void CreateGame()
+    {
+        InitializeVariables();
 
         //Get Solution
-        NewsAsset news = loadNews.getNews(5); //TODO: Carregar notícia aleatòria
+        news = loadNews.getNews(-1); // -1 is get a random new from the document
         solution = news.Title;
 
         CleanSolution();
 
         ShuffleSymbols(3);
-
-        //TODO: Marcar com a correctes, les lletres que no surten a la frase
     }
 
-    public uint getLettersLeft()
-    {
-        if (solution == getState()) return 0;
-        
-        uint n = 26;
-        foreach (letterState l in letters)
-        {
-            if (l == letterState.CORRECT || l == letterState.NOTAPPEARS) n--;
-        }
-        return n;
-    }
-
-    public string getState()
-    {
-        string result = "";
-        for (int l = 0; l < cleanSolution.Length; l++) {
-            if (isLetter(cleanSolution[l]))
-            {
-                if (letters[getLetterNumber(cleanSolution[l])] == letterState.CORRECT)
-                {
-                    result += solution[l];
-                }
-                else
-                {
-                    result += shuffledSymbols[getLetterNumber(cleanSolution[l])];
-                }
-            }
-            else
-            {
-                result += solution[l];
-            }
-        }
-
-        return result;
-    }
+    
 
     public bool isLetter(char c)
     {
@@ -106,39 +81,6 @@ public class gameInfo : MonoBehaviour
     {
         //If is letter and position is not correct, return true
         return isLetter(cleanSolution[p]) && letters[getLetterNumber(cleanSolution[p])] != letterState.CORRECT;
-    }
-
-    public bool checkLetter(char c, int pos)
-    {
-        if(pos >= cleanSolution.Length || pos < 0)
-        {
-            Debug.LogError("Letter checking failed: position out of bounds.");
-            return false;
-        }
-
-        //Correct
-        if(cleanSolution[pos] == c)
-        {
-            letters[getLetterNumber(c)] = letterState.CORRECT;
-            return true;
-        }
-
-        //Not correct
-        if (letters[getLetterNumber(c)] == letterState.NONE)
-        { 
-            if (cleanSolution.Contains(c))
-            {
-                letters[getLetterNumber(c)] = letterState.POSSIBLE;
-            }
-            else
-            {
-                letters[getLetterNumber(c)] = letterState.NOTAPPEARS;
-            }
-        }
-
-        //TODO: Afegir la lletra comprovada a la llista de lletres comprovades en aquesta posició.
-
-        return false;
     }
 
     public int getLetterNumber(char c)
@@ -182,5 +124,89 @@ public class gameInfo : MonoBehaviour
 
             shuffledSymbols = new string(symbols);
         }
+    }
+
+    //-------------------------------------------------------------------------------------------------------------
+    //
+    // GAME FUNCTIONALITIES
+    //
+    //-------------------------------------------------------------------------------------------------------------
+
+    public void Reset()
+    {
+        CreateGame();
+    }
+
+    public bool checkLetter(char c, int pos)
+    {
+        if (pos >= cleanSolution.Length || pos < 0)
+        {
+            Debug.LogError("Letter checking failed: position out of bounds.");
+            return false;
+        }
+
+        //Add a try
+        numberOfTries++;
+
+        //Correct
+        if (cleanSolution[pos] == c)
+        {
+            letters[getLetterNumber(c)] = letterState.CORRECT;
+            return true;
+        }
+
+        //Not correct
+        if (letters[getLetterNumber(c)] == letterState.NONE)
+        {
+            if (cleanSolution.Contains(c))
+            {
+                letters[getLetterNumber(c)] = letterState.POSSIBLE;
+            }
+            else
+            {
+                letters[getLetterNumber(c)] = letterState.NOTAPPEARS;
+            }
+        }
+
+        //TODO: Afegir la lletra comprovada a la llista de lletres comprovades en aquesta posició.
+
+        return false;
+    }
+
+    public uint getLettersLeft()
+    {
+        if (solution == getState()) return 0;
+
+        uint n = 26;
+        foreach (letterState l in letters)
+        {
+            if (l == letterState.CORRECT || l == letterState.NOTAPPEARS) n--;
+        }
+        return n;
+    }
+
+    public string getState()
+    {
+        string result = "";
+        for (int l = 0; l < cleanSolution.Length; l++)
+        {
+            if (isLetter(cleanSolution[l]))
+            {
+                if (letters[getLetterNumber(cleanSolution[l])] == letterState.CORRECT)
+                {
+                    result += solution[l];
+                }
+                else
+                {
+                    result += shuffledSymbols[getLetterNumber(cleanSolution[l])];
+                }
+            }
+            else
+            {
+                result += solution[l];
+            }
+        }
+
+        return result;
     }
 }
