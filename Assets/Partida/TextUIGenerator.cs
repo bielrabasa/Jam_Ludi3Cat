@@ -41,7 +41,7 @@ public class TextUIGenerator : MonoBehaviour
         {
             //Instanciate
             GameObject button = Instantiate(buttonPrefab);
-            button.transform.parent = canvas.transform;
+            button.transform.SetParent(canvas.transform);
 
             //Position
             if(cursor.x + letterSize + spacing.x > screenWidth - padding.x) //TODO: Do it with the word, not the next letter
@@ -57,7 +57,7 @@ public class TextUIGenerator : MonoBehaviour
             textButton.text = state[i].ToString();
 
             //Add to list
-            listOfLetters[i] = button as GameObject;
+            listOfLetters[i] = button;
         }
 
         //Deactivate spaces
