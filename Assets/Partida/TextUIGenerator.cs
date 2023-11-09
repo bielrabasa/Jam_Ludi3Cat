@@ -13,8 +13,6 @@ public class TextUIGenerator : MonoBehaviour
     Text textButton;
 
     GameObject[] listOfLetters;
-    int aux;
-    float j = 0;
 
     private void Start()
     {
@@ -42,7 +40,7 @@ public class TextUIGenerator : MonoBehaviour
         for (int i = 0; i < state.Length; i++)
         {
             //Instanciate
-            GameObject button = (GameObject)Instantiate(buttonPrefab);
+            GameObject button = Instantiate(buttonPrefab);
             button.transform.parent = canvas.transform;
 
             //Position
@@ -91,12 +89,12 @@ public class TextUIGenerator : MonoBehaviour
     {
         keyInput kI = FindObjectOfType<keyInput>();
 
-        //TODO: Change color of the selected
+        ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
 
         int i = 0;
         foreach (GameObject o in listOfLetters)
         {
-            o.GetComponent<Image>().color = new Color(1, 1, 1);
+            o.GetComponent<Image>().color = cSelect.get_not_selected();
 
             if (o == me)
             {
@@ -106,14 +104,14 @@ public class TextUIGenerator : MonoBehaviour
 
             if(o.GetComponentInChildren<Text>().text == me.GetComponentInChildren<Text>().text)
             {
-                o.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+                o.GetComponent<Image>().color = cSelect.get_similar_selected();
             }
 
 
             i++;
         }
 
-        me.GetComponent<Image>().color = new Color(0, 0, 0);
+        me.GetComponent<Image>().color = cSelect.get_selected();
     }
 
     public void SetPos(int pos)

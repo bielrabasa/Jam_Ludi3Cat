@@ -2904,7 +2904,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843554516
 GameObject:
@@ -5633,7 +5633,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596385239
 GameObject:
@@ -6573,7 +6573,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1730650803
 MonoBehaviour:
@@ -6587,10 +6587,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f625bbe342e7994ebdb26140850f45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {r: 0, g: 0, b: 0, a: 1}
+  background_dark: {r: 1, g: 1, b: 1, a: 1}
   notappears: {r: 0.145, g: 0.145, b: 0.145, a: 0.6078}
+  notappears_dark: {r: 1, g: 1, b: 1, a: 1}
   correct: {r: 0.2745, g: 0.8235, b: 0.2745, a: 1}
+  correct_dalt: {r: 0.2745, g: 0.8235, b: 0.2745, a: 1}
   possible: {r: 0.9215, g: 0.6274, b: 0, a: 1}
-  notPress: {r: 0, g: 0, b: 0, a: 0}
+  possible_dalt: {r: 0.50588, g: 0.8317, b: 0.98, a: 1}
+  selected: {r: 0, g: 0, b: 0, a: 1}
+  not_selected: {r: 1, g: 1, b: 1, a: 1}
+  similar_selected: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   clickedButtons: []
   notclickedButtons:
   - {fileID: 226831514}
@@ -6622,6 +6629,8 @@ MonoBehaviour:
   - {fileID: 462797639}
   - {fileID: 500153421}
   - {fileID: 285591671}
+  darkmode: {fileID: 56633928}
+  daltonic: {fileID: 1064481436}
 --- !u!1 &1731739754
 GameObject:
   m_ObjectHideFlags: 0
@@ -7859,7 +7868,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096574502
 GameObject:

@@ -44,16 +44,15 @@ public class VirtualKeyBoard : MonoBehaviour
 
         if (l == letterState.CORRECT)
         {
-            GetComponent<Image>().color = cSelect.correct;
-
+            GetComponent<Image>().color = cSelect.get_correct();
         }
         else if(l == letterState.NOTAPPEARS)
         {
-            GetComponent<Image>().color = cSelect.notappears;
+            GetComponent<Image>().color = cSelect.get_notappears();
         }
         else if(l == letterState.POSSIBLE)
         {
-            GetComponent<Image>().color = cSelect.possible;
+            GetComponent<Image>().color = cSelect.get_possible();
         }
     }
 
