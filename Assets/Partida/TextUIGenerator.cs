@@ -16,6 +16,11 @@ public class TextUIGenerator : MonoBehaviour
     int aux;
     float j = 0;
 
+    private void Start()
+    {
+        GenerateFrase();
+    }
+
     public void GenerateFrase()
     {
         //Get frase to print
