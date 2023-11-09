@@ -74,14 +74,13 @@ public class keyInput : MonoBehaviour
             if (gameManager.positionIsEmpty(i))
             {
                 lookingPos = i;
+                textUIG.SetPos(i);
                 return;
             }
         }
 
         Debug.LogError("ERROR, no positions found, something went wrong.");
     }
-
-
 
     void CheckVictory()
     {

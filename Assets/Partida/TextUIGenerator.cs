@@ -105,8 +105,17 @@ public class TextUIGenerator : MonoBehaviour
             }
             i++;
         }
+
         me.GetComponent<Image>().color = new Color(0, 0, 0);
+    }
 
-
+    public void SetPos(int pos)
+    {
+        if (pos < 0 || pos >= listOfLetters.Length)
+        {
+            Debug.Log("ERROR, selecting wrong position!");
+            return;
+        }
+        SetPos(listOfLetters[pos]);
     }
 }
