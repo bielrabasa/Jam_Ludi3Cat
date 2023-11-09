@@ -103,6 +103,13 @@ public class TextUIGenerator : MonoBehaviour
                 kI.lookingPos = i;
 
             }
+
+            if(o.GetComponentInChildren<Text>().text == me.GetComponentInChildren<Text>().text)
+            {
+                o.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f);
+            }
+
+
             i++;
         }
 
