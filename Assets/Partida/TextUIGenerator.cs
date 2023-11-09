@@ -96,11 +96,17 @@ public class TextUIGenerator : MonoBehaviour
         int i = 0;
         foreach (GameObject o in listOfLetters)
         {
-            if(o == me)
+            o.GetComponent<Image>().color = new Color(1, 1, 1);
+
+            if (o == me)
             {
                 kI.lookingPos = i;
+
             }
             i++;
         }
+        me.GetComponent<Image>().color = new Color(0, 0, 0);
+
+
     }
 }

@@ -22,6 +22,7 @@ public class gameInfo : MonoBehaviour
     
     public letterState[] letters;
     public int numberOfTries;
+    public int numberOfErrors;
     public int numberOfHints;
     public NewsAsset news;
 
@@ -224,5 +225,19 @@ public class gameInfo : MonoBehaviour
     public bool Victory()
     {
         return getState() == solution;
+    }
+
+    public void Statistics(bool notAppears)
+    {
+        numberOfTries++;
+
+        if (notAppears)
+        {
+            numberOfErrors++;
+        }
+
+        //sum number of hints
+
+        //% dencerts (number of letters / number of Tries)
     }
 }
