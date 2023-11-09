@@ -8,6 +8,7 @@ public class NewsAsset
     public string PhotoLink = "";
     public string Date = "";
     public string NewsLink = "";
+    public int NumNews = 0;
 }
 
 public class loadNews
@@ -48,6 +49,7 @@ public class loadNews
         n.PhotoLink = fileRow[fileRow.Length - 3];
         n.Date = fileRow[fileRow.Length - 2];
         n.NewsLink = fileRow[fileRow.Length - 1];
+        n.NumNews = number;
         return n;
     }
 }

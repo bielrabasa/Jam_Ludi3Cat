@@ -14,6 +14,11 @@ public class TextUIGenerator : MonoBehaviour
 
     GameObject[] listOfLetters;
 
+    float screenWidth;
+    float screenHeight;
+
+    public List<Sprite> spritesNews;
+
     private void Start()
     {
         GenerateFrase();
@@ -26,8 +31,8 @@ public class TextUIGenerator : MonoBehaviour
         listOfLetters = new GameObject[state.Length];
 
         //Screen info
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
         Vector2 padding = new Vector2 (screenWidth * 0.1f, screenHeight * 0.9f);
         Vector2 spacing = new Vector2(10f, 20f);
 
@@ -122,5 +127,19 @@ public class TextUIGenerator : MonoBehaviour
             return;
         }
         SetPos(listOfLetters[pos]);
+    }
+
+    public void SetImage()
+    {
+        Image img = GameObject.Find("Portada").GetComponent<Image>();
+
+        int nN = FindObjectOfType<gameInfo>().news.NumNews;
+
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+
+        img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
+        
+        img.sprite = spritesNews[nN];
     }
 }
