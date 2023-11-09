@@ -14,36 +14,50 @@ public class TextUIGenerator : MonoBehaviour
 
     GameObject[] listOfLetters;
     int aux;
-    int j = 0;
+    float j = 0;
 
     public void GenerateFrase()
     {
-        gameInfo gI;
+        //Get frase to print
+        string state = FindObjectOfType<gameInfo>().getState();
+        listOfLetters = new GameObject[state.Length];
 
-        gI = FindObjectOfType<gameInfo>();
+        //Screen info
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+        Vector2 padding = new Vector2 (screenWidth * 0.1f, screenHeight * 0.9f);
+        Vector2 spacing = new Vector2(10f, 20f);
 
-        string textSymbol = gI.getState();
+        //Button info
+        float letterSize = buttonPrefab.GetComponent<RectTransform>().rect.width; //Width = Height
 
-        listOfLetters = new GameObject[gI.cleanSolution.Length];
+        //Cursor
+        Vector2 cursor = padding;
 
-        for (int i = 0; i < gI.cleanSolution.Length; i++)
+        for (int i = 0; i < state.Length; i++)
         {
-          
+            //Instanciate
             GameObject button = (GameObject)Instantiate(buttonPrefab);
-            button.transform.parent = canvas.transform;     
-            button.transform.position = new Vector2(200 + aux*30, 200 - j);
-            textButton = button.GetComponentInChildren<Text>();
-            textButton.text = textSymbol[i].ToString();
-            if (button.transform.position.x >= 1500 && textButton.text == " ")
+            button.transform.parent = canvas.transform;
+
+            //Position
+            if(cursor.x + letterSize + spacing.x > screenWidth - padding.x) //TODO: Do it with the word, not the next letter
             {
-                j += 60;
-                aux = -1;
+                cursor.y -= letterSize + spacing.y;
+                cursor.x = padding.x;
             }
+            button.transform.position = cursor;
+            cursor.x += letterSize + spacing.x;
+
+            //Set letter
+            textButton = button.GetComponentInChildren<Text>();
+            textButton.text = state[i].ToString();
+
+            //Add to list
             listOfLetters[i] = button as GameObject;
-            aux++;
         }
 
-
+        //Deactivate spaces
         foreach (GameObject o in listOfLetters)
         {
             textButton = o.GetComponentInChildren<Text>();
