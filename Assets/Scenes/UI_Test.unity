@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -213,7 +213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 56633926}
   - component: {fileID: 56633928}
-  - component: {fileID: 56633929}
   m_Layer: 5
   m_Name: DarkModeToggle
   m_TagString: Untagged
@@ -303,18 +302,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
---- !u!114 &56633929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56633925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d65065ea7b03af4a82414f14e7b1f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &65860481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,7 +2870,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2899,6 +2888,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1730650802}
   - {fileID: 1918733477}
   - {fileID: 1302635288}
   - {fileID: 939765801}
@@ -3100,7 +3090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fc05aaff1ca7e4bbed6f2f9abec70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DOCUMENT_ENTRIES: 10
   solution: 
   cleanSolution: 
   letters: 
@@ -5761,9 +5750,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -6795,12 +6792,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730650801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 889.7838, y: 707.5837, z: -0.8104475}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 211.41776, y: -279.49554, z: -0.48985398}
+  m_LocalScale: {x: 0.60442406, y: 0.60442406, z: 0.60442406}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 749512143}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1730650803
 MonoBehaviour:
@@ -6814,17 +6811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f625bbe342e7994ebdb26140850f45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {r: 0, g: 0, b: 0, a: 1}
-  background_dark: {r: 1, g: 1, b: 1, a: 1}
-  notappears: {r: 0.145, g: 0.145, b: 0.145, a: 0.6078}
-  notappears_dark: {r: 1, g: 1, b: 1, a: 1}
-  correct: {r: 0.2745, g: 0.8235, b: 0.2745, a: 1}
-  correct_dalt: {r: 0.2745, g: 0.8235, b: 0.2745, a: 1}
-  possible: {r: 0.9215, g: 0.6274, b: 0, a: 1}
-  possible_dalt: {r: 0.50588, g: 0.8317, b: 0.98, a: 1}
-  selected: {r: 0, g: 0, b: 0, a: 1}
-  not_selected: {r: 1, g: 1, b: 1, a: 1}
-  similar_selected: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   clickedButtons: []
   notclickedButtons:
   - {fileID: 226831514}
@@ -8114,7 +8100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2087845476
 RectTransform:
   m_ObjectHideFlags: 0

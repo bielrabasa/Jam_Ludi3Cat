@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VirtualKeyBoard : MonoBehaviour
 {
+    private void Start()
+    {
+        GetComponent<Image>().color = FindObjectOfType<ColorsSelect>().get_none();
+    }
 
     public void InputKey()
     {
@@ -48,7 +53,7 @@ public class VirtualKeyBoard : MonoBehaviour
         }
         else if(l == letterState.NOTAPPEARS)
         {
-            GetComponent<Image>().color = cSelect.get_notappears();
+            GetComponent<Image>().color = cSelect.get_notappears(); //TODO: CHANGE
         }
         else if(l == letterState.POSSIBLE)
         {

@@ -12,7 +12,6 @@ public enum letterState
 
 public class gameInfo : MonoBehaviour
 {
-    public int DOCUMENT_ENTRIES = 10;
     [HideInInspector] public const int NUM_LETTERS = 26;
     const string SYMBOLS = "★✤✿♠♣♥♦☁☀▶∎☻◈〓✚⦿⊕☗✈◐☂♜♞♚♛☎";
 
@@ -51,7 +50,7 @@ public class gameInfo : MonoBehaviour
         InitializeVariables();
 
         //Get Solution
-        news = loadNews.getNews(-1); // -1 is get a random new from the document
+        news = loadNews.getNews(0); // -1 is get a random new from the document
         solution = news.Title;
 
         CleanSolution();
