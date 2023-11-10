@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 public class TextUIGenerator : MonoBehaviour
 {
@@ -16,8 +17,6 @@ public class TextUIGenerator : MonoBehaviour
 
     float screenWidth;
     float screenHeight;
-
-    public List<Sprite> spritesNews;
 
     private void Start()
     {
@@ -136,13 +135,33 @@ public class TextUIGenerator : MonoBehaviour
         Image img = GameObject.Find("Portada").GetComponent<Image>();
 
         int nN = FindObjectOfType<gameInfo>().news.NumNews;
+        string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
         screenWidth = Screen.width / 2;
         screenHeight = Screen.height / 2;
 
         img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
-        
-        //img.sprite = spritesNews[nN];
+
+        //TODO: get link from newAssets
+        StartCoroutine(LoadImage("https://img.ccma.cat/multimedia/jpg/0/1/1697536537110_670.jpg", img));
+    }
+
+    IEnumerator LoadImage(string link, Image img)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(link);
+        yield return request.SendWebRequest();
+
+        if(request.isNetworkError || request.isHttpError)
+        {
+            Debug.Log("ERROR");
+        }
+        else
+        {
+            Texture2D newTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            Sprite newSprite = Sprite.Create(newTexture, new Rect(0,0,newTexture.width, newTexture.height), new Vector2(0.5f,0.5f));
+
+            img.sprite = newSprite;
+        }
     }
 
     public void SetLink()
