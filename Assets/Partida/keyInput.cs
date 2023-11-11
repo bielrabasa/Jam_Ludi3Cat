@@ -55,6 +55,7 @@ public class keyInput : MonoBehaviour
         }
         else
         {
+            gameManager.numberOfErrors++;
             //TODO: Send a message: "incorrect letter"
             Debug.Log("IncorrectLetter");
         }
@@ -100,7 +101,7 @@ public class keyInput : MonoBehaviour
         int tries = gameManager.numberOfTries;
         int errors = gameManager.numberOfErrors;
         int hints = gameManager.numberOfHints;
-        int nleters = gameManager.cleanSolution.Length;
+        float nleters = gameManager.numberLetters;
 
         Text triesText = GameObject.Find("TriesText").GetComponent<Text>();
         Text errorText = GameObject.Find("ErrorText").GetComponent<Text>();
@@ -112,7 +113,9 @@ public class keyInput : MonoBehaviour
         hintsText.text = hints.ToString();
 
         //number of letters in the frase/ number of tries
-        float accuracity = (float)5 / tries;
+        Debug.Log(nleters);
+        Debug.Log(tries);
+        float accuracity = nleters / tries;
 
         accuracityText.text = accuracity.ToString("F2") + "%";
 

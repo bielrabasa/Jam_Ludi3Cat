@@ -23,6 +23,7 @@ public class gameInfo : MonoBehaviour
     public int numberOfTries;
     public int numberOfErrors;
     public int numberOfHints;
+    public float numberLetters;
     public NewsAsset news;
 
     private void Awake()
@@ -56,6 +57,8 @@ public class gameInfo : MonoBehaviour
         CleanSolution();
 
         ShuffleSymbols(3);
+
+        numberLetters = (float)getLettersLeft();
     }
     void InitializeVariables()
     {
@@ -228,17 +231,4 @@ public class gameInfo : MonoBehaviour
         return getState() == solution;
     }
 
-    public void Statistics(bool notAppears)
-    {
-        numberOfTries++;
-
-        if (notAppears)
-        {
-            numberOfErrors++;
-        }
-
-        //sum number of hints
-
-        //% dencerts (number of letters / number of Tries)
-    }
 }

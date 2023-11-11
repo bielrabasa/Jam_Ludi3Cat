@@ -21,22 +21,6 @@ public class VirtualKeyBoard : MonoBehaviour
         //Sumar 1 a intents
         ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
         cSelect.clickedButtons.Add(this.gameObject);
-
-        gameInfo gI = FindObjectOfType<gameInfo>();
-
-        letterState l = gI.letters[gI.getLetterNumber(char.Parse(this.name))];
-
-        if (l == letterState.CORRECT || l == letterState.POSSIBLE)
-        {
-            gI.Statistics(false);
-
-        }
-        else if (l == letterState.NOTAPPEARS)
-        {
-            gI.Statistics(true);
-        }
-
-
     }
 
     public void ChangeColor()
