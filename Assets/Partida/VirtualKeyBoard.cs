@@ -59,6 +59,10 @@ public class VirtualKeyBoard : MonoBehaviour
         {
             GetComponent<Image>().color = cSelect.get_possible();
         }
+        else
+        {
+            GetComponent<Image>().color = cSelect.get_none();
+        }
     }
 
     public void ChangeColorKeyBoard(GameObject g)

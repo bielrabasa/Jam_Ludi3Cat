@@ -10,10 +10,10 @@ public class ColorsSelect : MonoBehaviour
     Color background_dark = new Color(0, 0, 0);
 
     //Letters
-    Color none = new Color(0.5f, 0.5f, 0.5f, 0.75f);
+    Color none = new Color(0.5f, 0.5f, 0.5f, 0.75f);    //Keyboard non-clicked letters
 
-    Color text = new Color(0f, 0f, 0f, 1f);
-    Color text_dark = new Color(1f, 1f, 1f, 1f);
+    Color text = new Color(0f, 0f, 0f, 1f);             //Keyboard font color
+    Color text_dark = new Color(1f, 1f, 1f, 1f);        //Keyboard font color
 
     Color notappears = new Color(0f, 0f, 0f, 1f); //TODO: Other colors maybe?
     Color notappears_dark = new Color(1f, 1f, 1f, 1f);
