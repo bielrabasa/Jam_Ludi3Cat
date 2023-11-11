@@ -33,15 +33,15 @@ public class TextUIGenerator : MonoBehaviour
         listOfLetters = new GameObject[state.Length];
 
         //Button info
-        float letterSize = buttonPrefab.GetComponent<RectTransform>().rect.width; //Width = Height
+        Vector2 letterSize = new Vector2(buttonPrefab.GetComponent<RectTransform>().rect.width, buttonPrefab.GetComponent<RectTransform>().rect.height); //Width = Height
 
         //Screen info
         screenWidth = Screen.width;
         screenHeight = Screen.height;
-        Vector2 spacing = new Vector2(letterSize/10f, letterSize/6f);
+        Vector2 spacing = new Vector2(letterSize.x/10f, letterSize.y/6f);
 
         //
-        int lettersPerRow = (int)((screenWidth - (screenWidth * 0.1f * 2)) / (letterSize + spacing.x));
+        int lettersPerRow = (int)((screenWidth - (screenWidth * 0.1f * 2)) / (letterSize.x + spacing.x));
 
         //Cursor
         Vector2 cursor = new Vector2(screenWidth * 0.1f, screenHeight * 0.9f);
@@ -61,7 +61,7 @@ public class TextUIGenerator : MonoBehaviour
             }
             
             //Check size to center TODO: Not Perfect
-            float letterOccupation = (currentPrinting.Length * letterSize) + ((currentPrinting.Length - 1f) * spacing.x);
+            float letterOccupation = (currentPrinting.Length * letterSize.x) + ((currentPrinting.Length - 1f) * spacing.x);
             cursor.x = (screenWidth - letterOccupation) / 2f;
 
             //Add a space if it's not the las word
@@ -77,14 +77,14 @@ public class TextUIGenerator : MonoBehaviour
 
                 //Position
                 button.transform.position = cursor;
-                cursor.x += letterSize + spacing.x;
+                cursor.x += letterSize.x + spacing.x;
 
                 //Add to list
                 listOfLetters[realSolutionPosition + l] = button;
             }
 
             //Line jump
-            cursor.y -= letterSize + spacing.y;
+            cursor.y -= letterSize.y + spacing.y;
             realSolutionPosition += currentPrinting.Length;
         }
 
@@ -207,7 +207,18 @@ public class TextUIGenerator : MonoBehaviour
             img.sprite = newSprite;
         }
     }*/
+    public void ToggleDarkMode()
+    {
+        ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
+        
+        foreach (GameObject i in listOfLetters)
+        {
+            cSelect.FraseButtons.Add(i.gameObject);
+            Debug.Log(i.name);
+        }
 
+
+    }
     public void SetLink()
     {
         string lN = FindObjectOfType<gameInfo>().news.NewsLink;

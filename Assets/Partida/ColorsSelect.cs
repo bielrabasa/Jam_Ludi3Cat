@@ -30,6 +30,7 @@ public class ColorsSelect : MonoBehaviour
 
     [HideInInspector] public List<GameObject> clickedButtons;
     [HideInInspector] public List<GameObject> notclickedButtons;
+    [HideInInspector] public List<GameObject> FraseButtons;
 
     //Options
     [SerializeField] Toggle darkmode;
@@ -92,6 +93,7 @@ public class ColorsSelect : MonoBehaviour
 
         //Change key color
         VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
+
         foreach (GameObject obj in clickedButtons)
         {
             vKB.ChangeColorKeyBoard(obj);
@@ -101,6 +103,12 @@ public class ColorsSelect : MonoBehaviour
         foreach (GameObject obj in notclickedButtons)
         {
             obj.GetComponentInChildren<Text>().color = get_text();
+        }
+
+        //Change Frase color
+        foreach (GameObject obj in FraseButtons)
+        { 
+            obj.GetComponent<Image>().color = get_background();
         }
     }
 }
