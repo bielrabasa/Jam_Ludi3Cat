@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class keyInput : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class keyInput : MonoBehaviour
     public int lookingPos;
     int maxPos;
 
+    GameObject stats;
+
     void Start()
     {
         gameManager = FindObjectOfType<gameInfo>();
         textUIG = FindObjectOfType<TextUIGenerator>();
+
+        stats = GameObject.Find("Stats");
+        stats.SetActive(false);
 
         lookingPos = -1; //-1 for not focused
         maxPos = gameManager.getState().Length;
@@ -90,6 +96,27 @@ public class keyInput : MonoBehaviour
     void Win()
     {
         UpdateScreen();
+
+        stats.SetActive(true);
+
+        int tries = gameManager.numberOfTries;
+        int errors = gameManager.numberOfErrors;
+        int hints = gameManager.numberOfHints;
+        int nleters = gameManager.cleanSolution.Length;
+
+        Text triesText = GameObject.Find("TriesText").GetComponent<Text>();
+        Text errorText = GameObject.Find("ErrorText").GetComponent<Text>();
+        Text hintsText = GameObject.Find("HintsText").GetComponent<Text>();
+        Text accuracityText = GameObject.Find("AccuracityText").GetComponent<Text>();
+
+        triesText.text = tries.ToString();
+        errorText.text = errors.ToString();
+        hintsText.text = hints.ToString();
+
+        //number of letters in the frase/ number of tries
+        float accuracity = (float)5 / tries;
+
+        accuracityText.text = accuracity.ToString("F2") + "%";
 
         //TODO: fer les coses de quan algú guanya
         Debug.Log("Wiiiin!!!!");

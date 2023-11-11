@@ -134,7 +134,6 @@ public class TextUIGenerator : MonoBehaviour
     {
         Image img = GameObject.Find("Portada").GetComponent<Image>();
 
-        int nN = FindObjectOfType<gameInfo>().news.NumNews;
         string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
         screenWidth = Screen.width / 2;
