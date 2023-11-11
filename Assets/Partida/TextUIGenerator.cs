@@ -12,6 +12,7 @@ public class TextUIGenerator : MonoBehaviour
     public GameObject canvas;
 
     Text textButton;
+    [SerializeField] Text link;
 
     GameObject[] listOfLetters;
 
@@ -211,9 +212,9 @@ public class TextUIGenerator : MonoBehaviour
     {
         string lN = FindObjectOfType<gameInfo>().news.NewsLink;
 
-        Text t = GameObject.Find("Link").GetComponentInChildren<Text>();
+        //Text t = GameObject.Find("Link").GetComponentInChildren<Text>();
 
-        t.text = lN;
+        link.text = lN;
     }
 
     public void OpenLink()
