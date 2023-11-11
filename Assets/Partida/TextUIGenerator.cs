@@ -14,7 +14,7 @@ public class TextUIGenerator : MonoBehaviour
     Text textButton;
     [SerializeField] Text link;
 
-    GameObject[] listOfLetters;
+    public GameObject[] listOfLetters;
 
     float screenWidth;
     float screenHeight;
@@ -123,6 +123,7 @@ public class TextUIGenerator : MonoBehaviour
         foreach (GameObject o in listOfLetters)
         {
             o.GetComponent<Image>().color = cSelect.get_not_selected();
+            o.GetComponentInChildren<Text>().color = cSelect.get_not_text_selected();
 
             if (o == me)
             {
@@ -140,6 +141,7 @@ public class TextUIGenerator : MonoBehaviour
         }
 
         me.GetComponent<Image>().color = cSelect.get_selected();
+        me.GetComponentInChildren<Text>().color = cSelect.get_text_selected();
     }
 
     public void SetPos(int pos)
@@ -207,6 +209,7 @@ public class TextUIGenerator : MonoBehaviour
             img.sprite = newSprite;
         }
     }*/
+    /*
     public void ToggleDarkMode()
     {
         ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
@@ -214,11 +217,11 @@ public class TextUIGenerator : MonoBehaviour
         foreach (GameObject i in listOfLetters)
         {
             cSelect.FraseButtons.Add(i.gameObject);
-            Debug.Log(i.name);
         }
 
 
     }
+    */    
     public void SetLink()
     {
         string lN = FindObjectOfType<gameInfo>().news.NewsLink;

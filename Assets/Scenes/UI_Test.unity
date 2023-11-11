@@ -3617,6 +3617,7 @@ MonoBehaviour:
   numberOfTries: 0
   numberOfErrors: 0
   numberOfHints: 0
+  numberLetters: 0
 --- !u!4 &828019269
 Transform:
   m_ObjectHideFlags: 0
@@ -6507,6 +6508,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 2487770531274573487, guid: 6caab5fff3206cc48a3a1d930900b5cf, type: 3}
   canvas: {fileID: 164158152}
   link: {fileID: 706600992}
+  listOfLetters: []
 --- !u!4 &1565242914
 Transform:
   m_ObjectHideFlags: 0
@@ -7741,6 +7743,7 @@ MonoBehaviour:
   - {fileID: 462797639}
   - {fileID: 500153421}
   - {fileID: 285591671}
+  FraseButtons: []
   darkmode: {fileID: 56633928}
   daltonic: {fileID: 1064481436}
 --- !u!1 &1731739754

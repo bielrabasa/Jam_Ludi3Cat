@@ -28,6 +28,13 @@ public class ColorsSelect : MonoBehaviour
     Color not_selected = new Color(1,1,1);                          //Frase letter non selected
     Color similar_selected = new Color(0.5f, 0.5f, 0.5f);           //Frase letter same symbol as selected
 
+    Color selected_dark = new Color(1, 1, 1);                              //Frase letter selected
+    Color not_selected_dark = new Color(0, 0, 0);                          //Frase letter non selected
+    Color similar_selected_dark = new Color(0.5f, 0.5f, 0.5f);           //Frase letter same symbol as selected
+
+    Color text_selected = new Color(0, 0, 0);                          //Frase letter non selected
+    Color text_selected_dark = new Color(1f, 1f, 1f);           //Frase letter same symbol as selected
+
     [HideInInspector] public List<GameObject> clickedButtons;
     [HideInInspector] public List<GameObject> notclickedButtons;
     [HideInInspector] public List<GameObject> FraseButtons;
@@ -63,17 +70,24 @@ public class ColorsSelect : MonoBehaviour
     }
     public Color get_selected()
     {
-        return selected;
+        return darkmode.isOn ? selected_dark : selected;
     }
-
+    public Color get_text_selected()
+    {
+        return darkmode.isOn ? text_selected : text_selected_dark;
+    }
+    public Color get_not_text_selected()
+    {
+        return darkmode.isOn ? text_selected_dark : text_selected;
+    }
     public Color get_not_selected()
     {
-        return not_selected;
+        return darkmode.isOn ? not_selected_dark: not_selected;
     }
 
     public Color get_similar_selected()
     {
-        return similar_selected;
+        return darkmode.isOn ? similar_selected_dark: similar_selected;
     }
 
     public void DaltonicsOn()
@@ -93,6 +107,7 @@ public class ColorsSelect : MonoBehaviour
 
         //Change key color
         VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
+        TextUIGenerator Frase = FindObjectOfType<TextUIGenerator>();
 
         foreach (GameObject obj in clickedButtons)
         {
@@ -106,9 +121,11 @@ public class ColorsSelect : MonoBehaviour
         }
 
         //Change Frase color
-        foreach (GameObject obj in FraseButtons)
+        foreach (GameObject obj in Frase.listOfLetters)
         { 
             obj.GetComponent<Image>().color = get_background();
+            obj.GetComponentInChildren<Text>().color = get_text();
+            Debug.Log(obj.name);
         }
     }
 }
