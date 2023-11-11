@@ -6,27 +6,27 @@ using UnityEngine.UI;
 public class ColorsSelect : MonoBehaviour
 {
     //Background
-    Color background = new Color(1, 1, 1);
-    Color background_dark = new Color(0, 0, 0);
+    Color background = new Color(1, 1, 1);                          //Background lightmode
+    Color background_dark = new Color(0, 0, 0);                     //Background darkmode
 
     //Letters
-    Color none = new Color(0.5f, 0.5f, 0.5f, 0.75f);    //Keyboard non-clicked letters
+    Color none = new Color(0.5f, 0.5f, 0.5f, 0.75f);                //Keyboard non-clicked letters
 
-    Color text = new Color(0f, 0f, 0f, 1f);             //Keyboard font color
-    Color text_dark = new Color(1f, 1f, 1f, 1f);        //Keyboard font color
+    Color text = new Color(0f, 0f, 0f, 1f);                         //Keyboard font color
+    Color text_dark = new Color(1f, 1f, 1f, 1f);                    //Keyboard font color darkmode
 
     Color notappears = new Color(0f, 0f, 0f, 1f); //TODO: Other colors maybe?
-    Color notappears_dark = new Color(1f, 1f, 1f, 1f);
+    Color notappears_dark = new Color(1f, 1f, 1f, 1f);              //Keyboard clicked letter not in frase darkmode
 
-    Color correct = new Color(0.2745f, 0.8235f, 0.2745f, 1);
-    Color correct_dalt = new Color(1f, 0.8549f, 0.149f, 1);
+    Color correct = new Color(0.2745f, 0.8235f, 0.2745f, 1);        //Keyboard letter correct
+    Color correct_dalt = new Color(1f, 0.8549f, 0.149f, 1);         //Keyboard letter correct daltonic
 
-    Color possible = new Color(1f, 0.8549f, 0.149f, 1);
-    Color possible_dalt = new Color(0.50588f, 0.8317f, 0.98f, 1);
+    Color possible = new Color(1f, 0.8549f, 0.149f, 1);             //Keyboard clicked possible letter
+    Color possible_dalt = new Color(0.50588f, 0.8317f, 0.98f, 1);   //Keyboard clicked possible letter daltonic
 
-    Color selected = new Color(0,0,0);
-    Color not_selected = new Color(1,1,1);
-    Color similar_selected = new Color(0.5f, 0.5f, 0.5f);
+    Color selected = new Color(0,0,0);                              //Frase letter selected
+    Color not_selected = new Color(1,1,1);                          //Frase letter non selected
+    Color similar_selected = new Color(0.5f, 0.5f, 0.5f);           //Frase letter same symbol as selected
 
     [HideInInspector] public List<GameObject> clickedButtons;
     [HideInInspector] public List<GameObject> notclickedButtons;

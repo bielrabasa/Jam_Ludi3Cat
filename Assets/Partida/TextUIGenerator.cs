@@ -31,39 +31,60 @@ public class TextUIGenerator : MonoBehaviour
         string state = FindObjectOfType<gameInfo>().getState();
         listOfLetters = new GameObject[state.Length];
 
-        //Screen info
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
-        Vector2 padding = new Vector2 (screenWidth * 0.1f, screenHeight * 0.9f);
-        Vector2 spacing = new Vector2(10f, 20f);
-
         //Button info
         float letterSize = buttonPrefab.GetComponent<RectTransform>().rect.width; //Width = Height
 
+        //Screen info
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+        Vector2 spacing = new Vector2(letterSize/10f, letterSize/6f);
+
+        //
+        int lettersPerRow = (int)((screenWidth - (screenWidth * 0.1f * 2)) / (letterSize + spacing.x));
+
         //Cursor
-        Vector2 cursor = padding;
+        Vector2 cursor = new Vector2(screenWidth * 0.1f, screenHeight * 0.9f);
 
-        for (int i = 0; i < state.Length; i++)
+        string[] frase = state.Split(' ');
+        int realSolutionPosition = 0;
+
+        for (int i = 0; i < frase.Length; i++)
         {
-            //Instanciate
-            GameObject button = Instantiate(buttonPrefab);
-            button.transform.SetParent(canvas.transform);
-
-            //Position
-            if(cursor.x + letterSize + spacing.x > screenWidth - padding.x) //TODO: Do it with the word, not the next letter
+            //Check all printable words in the row
+            string currentPrinting = frase[i];
+            while (i < frase.Length - 1 && //Check last word
+                currentPrinting.Length + 1 + frase[i+1].Length <= lettersPerRow) //Check that the next word fits
             {
-                cursor.y -= letterSize + spacing.y;
-                cursor.x = padding.x;
+                currentPrinting += ' ' + frase[i + 1];
+                i++;
             }
-            button.transform.position = cursor;
-            cursor.x += letterSize + spacing.x;
+            
+            //Check size to center TODO: Not Perfect
+            float letterOccupation = (currentPrinting.Length * letterSize) + ((currentPrinting.Length - 1f) * spacing.x);
+            cursor.x = (screenWidth - letterOccupation) / 2f;
 
-            //Set letter
-            textButton = button.GetComponentInChildren<Text>();
-            textButton.text = state[i].ToString();
+            //Add a space if it's not the las word
+            if (i < frase.Length - 1) currentPrinting += ' ';
 
-            //Add to list
-            listOfLetters[i] = button;
+            //Print frase
+            for (int l = 0; l < currentPrinting.Length; l++)
+            {
+                //Instantiate
+                GameObject button = Instantiate(buttonPrefab);
+                button.transform.SetParent(canvas.transform);
+                button.GetComponentInChildren<Text>().text =  currentPrinting[l].ToString();
+
+                //Position
+                button.transform.position = cursor;
+                cursor.x += letterSize + spacing.x;
+
+                //Add to list
+                listOfLetters[realSolutionPosition + l] = button;
+            }
+
+            //Line jump
+            cursor.y -= letterSize + spacing.y;
+            realSolutionPosition += currentPrinting.Length;
         }
 
         //Deactivate spaces

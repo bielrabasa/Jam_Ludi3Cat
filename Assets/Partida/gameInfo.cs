@@ -50,7 +50,7 @@ public class gameInfo : MonoBehaviour
         InitializeVariables();
 
         //Get Solution
-        news = loadNews.getNews(0); // -1 is get a random new from the document
+        news = loadNews.getNews(-1); // -1 is get a random new from the document
         solution = news.Title;
 
         CleanSolution();
