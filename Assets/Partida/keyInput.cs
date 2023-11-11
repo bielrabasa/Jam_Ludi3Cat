@@ -41,9 +41,7 @@ public class keyInput : MonoBehaviour
 
     void UpdateScreen()
     {
-        //TODO: amb lookingPos, marcar el quadre seleccionat d'alguna manera
         textUIG.UpdateFrase();
-        //Debug.Log("Pos: " + lookingPos + "\tLetters left: " + gameManager.getLettersLeft() + "\n" + gameManager.getState());
     }
 
     public void CheckLetter(char letter)

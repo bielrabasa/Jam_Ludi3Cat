@@ -186,13 +186,15 @@ public class gameInfo : MonoBehaviour
 
     public uint getLettersLeft()
     {
-        if (solution == getState()) return 0;
+        //if (solution == getState()) return 0;
 
-        uint n = 26;
-        foreach (letterState l in letters)
+        uint n = NUM_LETTERS;
+        for (int i = 97; i < 97 + NUM_LETTERS; i++)
         {
-            if (l == letterState.CORRECT || l == letterState.NOTAPPEARS) n--;
+            if (!cleanSolution.Contains((char)i)) n--;
+            else if (letters[getLetterNumber((char)i)] == letterState.CORRECT) n--;
         }
+
         return n;
     }
 

@@ -53,7 +53,7 @@ public class VirtualKeyBoard : MonoBehaviour
         }
         else if(l == letterState.NOTAPPEARS)
         {
-            GetComponent<Image>().color = cSelect.get_notappears(); //TODO: CHANGE
+            GetComponent<Image>().color = cSelect.get_notappears();
         }
         else if(l == letterState.POSSIBLE)
         {
