@@ -174,18 +174,22 @@ public class TextUIGenerator : MonoBehaviour
     {
         Image img = GameObject.Find("Portada").GetComponent<Image>();
 
-        string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
+        int nN = FindObjectOfType<gameInfo>().news.NumNews;
+        //string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
         screenWidth = Screen.width / 2;
         screenHeight = Screen.height / 2;
 
         img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
 
+        //img.sprite = imgSprites[nN];
+        img.sprite = Resources.Load<Sprite>("fotos/" + nN);
+
         //TODO: get link from newAssets
-        StartCoroutine(LoadImage("https://img.ccma.cat/multimedia/jpg/0/1/1697536537110_670.jpg", img));
+        //StartCoroutine(LoadImage("https://img.ccma.cat/multimedia/jpg/0/1/1697536537110_670.jpg", img));
     }
 
-    IEnumerator LoadImage(string link, Image img)
+    /*IEnumerator LoadImage(string link, Image img)
     {
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(link);
         yield return request.SendWebRequest();
@@ -201,7 +205,7 @@ public class TextUIGenerator : MonoBehaviour
 
             img.sprite = newSprite;
         }
-    }
+    }*/
 
     public void SetLink()
     {
