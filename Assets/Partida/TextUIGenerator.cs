@@ -18,7 +18,7 @@ public class TextUIGenerator : MonoBehaviour
     float screenWidth;
     float screenHeight;
 
-    private void Start()
+    public void Start()
     {
         GenerateFrase();
         SetLink();
@@ -128,6 +128,25 @@ public class TextUIGenerator : MonoBehaviour
             return;
         }
         SetPos(listOfLetters[pos]);
+    }
+
+    public void DeleteFrase()
+    {
+        foreach(GameObject go in listOfLetters)
+        {
+            Destroy(go);
+        }
+    }
+
+    public void ResetColorKeyBoard()
+    {
+        GameObject keyboard = GameObject.Find("Teclat Alfabetic");
+        VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
+        
+        for (int i = 0; i < keyboard.transform.childCount; i++)
+        {
+            vKB.ChangeColorKeyBoard(keyboard.transform.GetChild(i).gameObject);
+        }
     }
 
     public void SetImage()
