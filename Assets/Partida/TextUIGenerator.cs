@@ -180,10 +180,12 @@ public class TextUIGenerator : MonoBehaviour
         int nN = FindObjectOfType<gameInfo>().news.NumNews;
         //string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
-        screenWidth = Screen.width / 2;
-        screenHeight = Screen.height / 2;
+        screenWidth = Screen.width / 4;
+        screenHeight = Screen.height / 4;
 
         img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
+
+        img.rectTransform.localPosition = new Vector3(0, -175, 0);
 
         //img.sprite = imgSprites[nN];
         img.sprite = Resources.Load<Sprite>("fotos/" + nN);
