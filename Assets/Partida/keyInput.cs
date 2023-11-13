@@ -123,9 +123,9 @@ public class keyInput : MonoBehaviour
         //number of letters in the frase/ number of tries
         Debug.Log(nleters);
         Debug.Log(tries);
-        float accuracity = nleters / tries;
+        float accuracity = (nleters / tries) * 100;
 
-        accuracityText.text = accuracity.ToString("F2") + "%";
+        accuracityText.text = accuracity.ToString("F0") + "%";
 
         //TODO: fer les coses de quan algú guanya
         Debug.Log("Wiiiin!!!!");
