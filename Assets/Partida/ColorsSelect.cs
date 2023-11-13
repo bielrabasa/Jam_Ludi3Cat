@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ColorsSelect : MonoBehaviour
 {
     //Background
-    Color background = new Color(1, 1, 1);                          //Background lightmode
-    Color background_dark = new Color(0, 0, 0);                     //Background darkmode
+    Color background = new Color(1, 1, 1);                          //Keyboard Background lightmode
+    Color background_dark = new Color(0, 0, 0);                     //Keyboard Background darkmode
+
+    Color background_game_light = new Color(0.78f, 0.78f, 0.78f);   //Game Background lightmode
+    Color background_game_dark = new Color(0.27f, 0.27f, 0.27f);    //Game Background darkmode
 
     //Letters
     Color none = new Color(0.5f, 0.5f, 0.5f, 0.75f);                //Keyboard non-clicked letters
@@ -28,19 +31,18 @@ public class ColorsSelect : MonoBehaviour
     Color not_selected = new Color(1,1,1);                          //Frase letter non selected
     Color similar_selected = new Color(0.5f, 0.5f, 0.5f);           //Frase letter same symbol as selected
 
-    Color selected_dark = new Color(1, 1, 1);                              //Frase letter selected
-    Color not_selected_dark = new Color(0, 0, 0);                          //Frase letter non selected
-    Color similar_selected_dark = new Color(0.5f, 0.5f, 0.5f);           //Frase letter same symbol as selected
+    Color selected_dark = new Color(1, 1, 1);                       //Frase letter selected darkmode
+    Color not_selected_dark = new Color(0, 0, 0);                   //Frase letter non selected darkmode
+    Color similar_selected_dark = new Color(0.5f, 0.5f, 0.5f);      //Frase letter same symbol as selected darkmode
 
-    Color text_selected = new Color(0, 0, 0);                          //Frase letter non selected
-    Color text_selected_dark = new Color(1f, 1f, 1f);           //Frase letter same symbol as selected
+    Color text_selected = new Color(0, 0, 0);                       //Frase letter non selected
+    Color text_selected_dark = new Color(1f, 1f, 1f);               //Frase letter same symbol as selected
 
-    Color background_game_dark = new Color(0.27f, 0.27f, 0.27f);           //Color Background Game
-    Color background_game_light = new Color(0.78f, 0.78f, 0.78f);           //Color Background Game
+    
 
-    [HideInInspector] public List<GameObject> clickedButtons;
+    /*[HideInInspector] public List<GameObject> clickedButtons;
     [HideInInspector] public List<GameObject> notclickedButtons;
-    [HideInInspector] public List<GameObject> FraseButtons;
+    [HideInInspector] public List<GameObject> FraseButtons;*/
 
     //Options
     [SerializeField] Toggle darkmode;
@@ -71,6 +73,10 @@ public class ColorsSelect : MonoBehaviour
     {
         return darkmode.isOn ? background_dark : background;
     }
+    public Color get_game_background()
+    {
+        return darkmode.isOn ? background_game_dark : background_game_light;
+    }
     public Color get_selected()
     {
         return darkmode.isOn ? selected_dark : selected;
@@ -95,50 +101,28 @@ public class ColorsSelect : MonoBehaviour
 
     public void DaltonicsOn()
     {
-        //Change key color
-        VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
-        foreach(GameObject obj in clickedButtons)
-        {
-            vKB.ChangeColorKeyBoard(obj);
-        }
+        //Reset Keyboard Colors
+        FindObjectOfType<TextUIGenerator>().ResetColorKeyBoard();
     }
 
-    public void DarkOn(GameObject backgrounKB)
+    public void DarkOn(GameObject backgroundKB)
     {
         //Change background
-        backgrounKB.GetComponent<Image>().color = get_background();
+        backgroundKB.GetComponent<Image>().color = get_background();
 
         //Change key color
-        VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
-        TextUIGenerator Frase = FindObjectOfType<TextUIGenerator>();
-        Camera cam = FindObjectOfType<Camera>();
+        TextUIGenerator ui = FindObjectOfType<TextUIGenerator>();
+        ui.ResetColorFrase();
+        ui.ResetColorKeyBoard();
+        ui.SetPos(FindObjectOfType<keyInput>().lookingPos);
 
-        foreach (GameObject obj in clickedButtons)
+        //Game background
+        FindObjectOfType<Camera>().backgroundColor = get_game_background();
+
+        //Reset menu buttons text
+        foreach(Text t in GameObject.Find("Menus").GetComponentsInChildren<Text>())
         {
-            vKB.ChangeColorKeyBoard(obj);
+            t.color = get_text();
         }
-
-        //Change font color
-        foreach (GameObject obj in notclickedButtons)
-        {
-            obj.GetComponentInChildren<Text>().color = get_text();
-        }
-
-        //Change Frase color
-        foreach (GameObject obj in Frase.listOfLetters)
-        { 
-            obj.GetComponent<Image>().color = get_background();
-            obj.GetComponentInChildren<Text>().color = get_text();
-        }
-
-        if(darkmode.isOn)
-        {
-            cam.backgroundColor = background_game_dark;
-        }
-        else
-        {
-            cam.backgroundColor = background_game_light;
-        }
-
     }
 }

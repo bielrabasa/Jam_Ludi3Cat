@@ -173,6 +173,18 @@ public class TextUIGenerator : MonoBehaviour
         }
     }
 
+    public void ResetColorFrase()
+    {
+        ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
+
+        //Change Frase color
+        foreach (GameObject obj in listOfLetters)
+        {
+            obj.GetComponent<Image>().color = cSelect.get_background();
+            obj.GetComponentInChildren<Text>().color = cSelect.get_text();
+        }
+    }
+
     public void SetImage()
     {
         Image img = GameObject.Find("Portada").GetComponent<Image>();

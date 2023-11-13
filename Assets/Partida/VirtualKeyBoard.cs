@@ -18,9 +18,10 @@ public class VirtualKeyBoard : MonoBehaviour
 
     public void AddLetterPress()
     {
+        //TODO: 
         //Sumar 1 a intents
-        ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
-        cSelect.clickedButtons.Add(this.gameObject);
+        //ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
+        //cSelect.clickedButtons.Add(this.gameObject);
     }
 
     public void ChangeColor()
@@ -31,6 +32,7 @@ public class VirtualKeyBoard : MonoBehaviour
 
         letterState l = gI.letters[gI.getLetterNumber(char.Parse(this.name))];
 
+        //Change key color
         if (l == letterState.CORRECT)
         {
             GetComponent<Image>().color = cSelect.get_correct();
@@ -47,6 +49,9 @@ public class VirtualKeyBoard : MonoBehaviour
         {
             GetComponent<Image>().color = cSelect.get_none();
         }
+
+        //Change key letter color
+        GetComponentInChildren<Text>().color = cSelect.get_text();
     }
 
     public void ChangeColorKeyBoard(GameObject g)
