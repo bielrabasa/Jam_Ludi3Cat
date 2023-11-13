@@ -61,16 +61,9 @@ public class keyInput : MonoBehaviour
             UpdatePos();
             UpdateScreen();
         }
-        else
-        {
-            gameManager.numberOfErrors++;
-            //TODO: Send a message: "incorrect letter"
-            Debug.Log("IncorrectLetter");
-        }
 
         GameObject t = GameObject.Find(letter.ToString());
 
-        t.GetComponent<VirtualKeyBoard>().AddLetterPress();
         t.GetComponent<VirtualKeyBoard>().ChangeColor();
     }
 
@@ -93,6 +86,16 @@ public class keyInput : MonoBehaviour
         }
 
         Debug.LogError("ERROR, no positions found, something went wrong.");
+    }
+
+    public void Hint()
+    {
+        gameManager.Hint();
+
+        textUIG.UpdateFrase();
+        textUIG.ResetColorKeyBoard();
+
+        CheckVictory();
     }
 
     void CheckVictory()
@@ -123,7 +126,12 @@ public class keyInput : MonoBehaviour
         //number of letters in the frase/ number of tries
         Debug.Log(nleters);
         Debug.Log(tries);
-        float accuracity = (nleters / tries) * 100;
+
+        float accuracity = 0;
+        if(tries != 0)
+        {
+            accuracity = (nleters / (tries+hints)) * 100; //TODO: With hints, not well calculated
+        }
 
         accuracityText.text = accuracity.ToString("F0") + "%";
 

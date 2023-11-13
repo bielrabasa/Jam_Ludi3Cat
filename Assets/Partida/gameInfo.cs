@@ -169,6 +169,8 @@ public class gameInfo : MonoBehaviour
             return true;
         }
 
+        numberOfErrors++;
+
         //Not correct
         if (letters[getLetterNumber(c)] == letterState.NONE)
         {
@@ -224,6 +226,39 @@ public class gameInfo : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void Hint()
+    {
+        string possible = "";
+
+        //Pick possible letters to unlock
+        for (int i = 97; i < 97 + NUM_LETTERS; i++)
+        {
+            char letter = (char)i;
+            letterState l = letters[getLetterNumber(letter)];
+
+            if(l == letterState.NONE || l == letterState.POSSIBLE)
+            {
+                possible += letter;
+            }
+        }
+
+        //Choose random
+        char random = possible[Random.Range(0, possible.Length)];
+        int letterNumber = getLetterNumber(random);
+
+        //Solve chosen letter
+        if(letters[letterNumber] == letterState.POSSIBLE || cleanSolution.Contains(random))
+        {
+            letters[letterNumber] = letterState.CORRECT;
+        }
+        else
+        {
+            letters[letterNumber] = letterState.NOTAPPEARS;
+        }
+
+        numberOfHints++;
     }
 
     public bool Victory()

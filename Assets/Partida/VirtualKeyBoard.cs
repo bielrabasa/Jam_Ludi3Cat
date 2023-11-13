@@ -16,14 +16,6 @@ public class VirtualKeyBoard : MonoBehaviour
         FindObjectOfType<keyInput>().CheckLetter(char.Parse(this.name));
     }
 
-    public void AddLetterPress()
-    {
-        //TODO: 
-        //Sumar 1 a intents
-        //ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
-        //cSelect.clickedButtons.Add(this.gameObject);
-    }
-
     public void ChangeColor()
     {
         ColorsSelect cSelect = FindObjectOfType<ColorsSelect>();
