@@ -188,8 +188,10 @@ public class TextUIGenerator : MonoBehaviour
     public void SetImage()
     {
         Image img = GameObject.Find("Portada").GetComponent<Image>();
+        Text date = GameObject.Find("DateNews").GetComponent<Text>();
 
         int nN = FindObjectOfType<gameInfo>().news.NumNews;
+        string d = FindObjectOfType<gameInfo>().news.Date;
         //string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
         screenWidth = Screen.width / 4;
@@ -199,8 +201,12 @@ public class TextUIGenerator : MonoBehaviour
 
         img.rectTransform.localPosition = new Vector3(0, -175, 0);
 
-        //img.sprite = imgSprites[nN];
         img.sprite = Resources.Load<Sprite>("fotos/" + nN);
+
+        date.text = d;
+
+        date.transform.localPosition = img.transform.localPosition;
+        date.rectTransform.anchoredPosition = new Vector2((img.rectTransform.sizeDelta.x / 2) + (date.rectTransform.sizeDelta.x / 2) , - (img.rectTransform.sizeDelta.y) - (date.rectTransform.sizeDelta.y / 2));
 
         //TODO: get link from newAssets
         //StartCoroutine(LoadImage("https://img.ccma.cat/multimedia/jpg/0/1/1697536537110_670.jpg", img));

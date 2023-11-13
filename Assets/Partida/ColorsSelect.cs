@@ -124,5 +124,7 @@ public class ColorsSelect : MonoBehaviour
         {
             t.color = get_text();
         }
+
+        GameObject.Find("DateNews").GetComponent<Text>().color = get_background();
     }
 }
