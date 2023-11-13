@@ -35,6 +35,9 @@ public class ColorsSelect : MonoBehaviour
     Color text_selected = new Color(0, 0, 0);                          //Frase letter non selected
     Color text_selected_dark = new Color(1f, 1f, 1f);           //Frase letter same symbol as selected
 
+    Color background_game_dark = new Color(0.27f, 0.27f, 0.27f);           //Color Background Game
+    Color background_game_light = new Color(0.78f, 0.78f, 0.78f);           //Color Background Game
+
     [HideInInspector] public List<GameObject> clickedButtons;
     [HideInInspector] public List<GameObject> notclickedButtons;
     [HideInInspector] public List<GameObject> FraseButtons;
@@ -108,6 +111,7 @@ public class ColorsSelect : MonoBehaviour
         //Change key color
         VirtualKeyBoard vKB = FindObjectOfType<VirtualKeyBoard>();
         TextUIGenerator Frase = FindObjectOfType<TextUIGenerator>();
+        Camera cam = FindObjectOfType<Camera>();
 
         foreach (GameObject obj in clickedButtons)
         {
@@ -125,7 +129,16 @@ public class ColorsSelect : MonoBehaviour
         { 
             obj.GetComponent<Image>().color = get_background();
             obj.GetComponentInChildren<Text>().color = get_text();
-            Debug.Log(obj.name);
         }
+
+        if(darkmode.isOn)
+        {
+            cam.backgroundColor = background_game_dark;
+        }
+        else
+        {
+            cam.backgroundColor = background_game_light;
+        }
+
     }
 }
