@@ -194,10 +194,16 @@ public class TextUIGenerator : MonoBehaviour
         string d = FindObjectOfType<gameInfo>().news.Date;
         //string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
 
-        screenWidth = Screen.width / 4;
-        screenHeight = Screen.height / 4;
+        //screenWidth = Screen.width / 4;
+        //screenHeight = Screen.height / 4;
 
-        img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
+        screenWidth = Resources.Load<Sprite>("fotos/" + nN).textureRect.width;
+        screenHeight = Resources.Load<Sprite>("fotos/" + nN).textureRect.height;
+
+        img.rectTransform.sizeDelta = new Vector2(screenWidth * (100 / (Screen.width * 0.25f)), screenHeight * (100 / (Screen.height * 0.25f)));
+
+        Debug.Log(Screen.width);
+        Debug.Log(Screen.height);
 
         img.rectTransform.localPosition = new Vector3(0, -175, 0);
 
