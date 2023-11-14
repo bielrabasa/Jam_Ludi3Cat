@@ -16,9 +16,6 @@ public class TextUIGenerator : MonoBehaviour
 
     public GameObject[] listOfLetters;
 
-    float screenWidth;
-    float screenHeight;
-
     public void Start()
     {
         GenerateFrase();
@@ -36,8 +33,8 @@ public class TextUIGenerator : MonoBehaviour
         Vector2 letterSize = new Vector2(buttonPrefab.GetComponent<RectTransform>().rect.width, buttonPrefab.GetComponent<RectTransform>().rect.height); //Width = Height
 
         //Screen info
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
         Vector2 spacing = new Vector2(letterSize.x/10f, letterSize.y/6f);
 
         //
@@ -190,34 +187,20 @@ public class TextUIGenerator : MonoBehaviour
         Image img = GameObject.Find("Portada").GetComponent<Image>();
         Text date = GameObject.Find("DateNews").GetComponent<Text>();
 
-        int nN = FindObjectOfType<gameInfo>().news.NumNews;
-        string d = FindObjectOfType<gameInfo>().news.Date;
-        //string pL = FindObjectOfType<gameInfo>().news.PhotoLink;
+        NewsAsset n = FindObjectOfType<gameInfo>().news;
+        Sprite photo = Resources.Load<Sprite>("fotos/" + n.NumNews);
 
-        //screenWidth = Screen.width / 4;
-        //screenHeight = Screen.height / 4;
+        //Set photo scale & position
+        float ratio = photo.textureRect.width / photo.textureRect.height;
+        float photoSize = 275;
+        img.rectTransform.sizeDelta = new Vector2(photoSize * ratio, photoSize);
+        img.rectTransform.localPosition = new Vector3(0, -160, 0);
+        img.sprite = photo;
 
-        float ratio;
-
-        ratio = Resources.Load<Sprite>("fotos/" + nN).textureRect.width / Resources.Load<Sprite>("fotos/" + nN).textureRect.height;
-
-        screenWidth = Resources.Load<Sprite>("fotos/" + nN).textureRect.width * (100 / (Screen.width * 0.25f));
-        screenHeight = (screenHeight / ratio) * (100 / (Screen.height * 0.25f));
-
-        img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
-
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.height);
-
-        img.rectTransform.localPosition = new Vector3(0, -175, 0);
-
-        img.sprite = Resources.Load<Sprite>("fotos/" + nN);
-
-        date.text = d;
-
-        date.transform.localPosition = img.transform.localPosition;
-        date.rectTransform.anchoredPosition = new Vector2((img.rectTransform.sizeDelta.x / 2) + (date.rectTransform.sizeDelta.x / 2) , - (img.rectTransform.sizeDelta.y) - (date.rectTransform.sizeDelta.y / 2));
-
+        //Set date position
+        date.text = n.Date;
+        date.transform.localPosition = img.transform.localPosition + new Vector3(0, photoSize/2 + 20, 0);
+        
         //TODO: get link from newAssets
         //StartCoroutine(LoadImage("https://img.ccma.cat/multimedia/jpg/0/1/1697536537110_670.jpg", img));
     }
