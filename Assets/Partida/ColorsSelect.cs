@@ -9,14 +9,15 @@ public class ColorsSelect : MonoBehaviour
     Color background = new Color(1, 1, 1);                          //Keyboard Background lightmode
     Color background_dark = new Color(0, 0, 0);                     //Keyboard Background darkmode
 
-    Color background_game_light = new Color(0.78f, 0.78f, 1f);   //Game Background lightmode
-    Color background_game_dark = new Color(0.27f, 0.27f, 1f);    //Game Background darkmode
+    Color background_game_light = new Color(1.0f, 1.0f, 1f);   //Game Background lightmode
+    Color background_game_dark = new Color(0.1f, 0.1f, 0.1f);    //Game Background darkmode
 
     //Letters
-    Color none = new Color(0.5f, 0.5f, 0.5f, 1f);                //Keyboard non-clicked letters
+    Color none = new Color(0.1f, 0.1f, 0.1f, 1f);                //Keyboard non-clicked letters
+    Color none_dark = new Color(1f, 1f, 1f, 1f);                //Keyboard non-clicked letters
 
-    Color text = new Color(0f, 0f, 0f, 1f);                         //Keyboard font color
-    Color text_dark = new Color(1f, 1f, 1f, 1f);                    //Keyboard font color darkmode
+    Color text = new Color(1f, 1f, 1f, 1f);                         //Keyboard font color
+    Color text_dark = new Color(0.1f, 0.1f, 0.1f, 1f);                    //Keyboard font color darkmode
 
     Color notappears = new Color(0f, 0f, 0f, 1f); //TODO: Other colors maybe?
     Color notappears_dark = new Color(1f, 1f, 1f, 1f);              //Keyboard clicked letter not in frase darkmode
@@ -55,7 +56,7 @@ public class ColorsSelect : MonoBehaviour
 
     public Color get_none()
     {
-        return none;
+        return darkmode.isOn ? none_dark : none;
     }
 
     public Color get_notappears() {
