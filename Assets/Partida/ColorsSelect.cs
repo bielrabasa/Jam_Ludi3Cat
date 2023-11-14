@@ -9,8 +9,8 @@ public class ColorsSelect : MonoBehaviour
     Color background = new Color(1, 1, 1);                          //Keyboard Background lightmode
     Color background_dark = new Color(0, 0, 0);                     //Keyboard Background darkmode
 
-    Color background_game_light = new Color(1.0f, 1.0f, 1f);   //Game Background lightmode
-    Color background_game_dark = new Color(0.1f, 0.1f, 0.1f);    //Game Background darkmode
+    Color background_game_light = new Color(0.78f, 0.78f, 0.78f);   //Game Background lightmode
+    Color background_game_dark = new Color(0.27f, 0.27f, 0.27f);    //Game Background darkmode
 
     //Letters
     Color none = new Color(0.1f, 0.1f, 0.1f, 1f);                //Keyboard non-clicked letters
@@ -123,7 +123,7 @@ public class ColorsSelect : MonoBehaviour
         //Reset menu buttons text
         foreach(Text t in GameObject.Find("Menus").GetComponentsInChildren<Text>())
         {
-            t.color = get_text();
+            t.color = get_none();
         }
 
         GameObject.Find("DateNews").GetComponent<Text>().color = get_background();
