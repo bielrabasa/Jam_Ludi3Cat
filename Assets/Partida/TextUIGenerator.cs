@@ -250,11 +250,9 @@ public class TextUIGenerator : MonoBehaviour
     */    
     public void SetLink()
     {
-        string lN = FindObjectOfType<gameInfo>().news.NewsLink;
-
-        //Text t = GameObject.Find("Link").GetComponentInChildren<Text>();
-
-        link.text = lN;
+        string l = "Enllaç a la notícia:\n";
+        l += FindObjectOfType<gameInfo>().news.NewsLink;
+        link.text = l;
     }
 
     public void OpenLink()

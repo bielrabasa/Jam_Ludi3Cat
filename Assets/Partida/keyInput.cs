@@ -85,7 +85,7 @@ public class keyInput : MonoBehaviour
             }
         }
 
-        Debug.LogError("ERROR, no positions found, something went wrong.");
+        //Debug.LogError("ERROR, no positions found, something went wrong.");
     }
 
     public void Hint()
@@ -123,10 +123,6 @@ public class keyInput : MonoBehaviour
         errorText.text = errors.ToString();
         hintsText.text = hints.ToString();
 
-        //number of letters in the frase/ number of tries
-        Debug.Log(nleters);
-        Debug.Log(tries);
-
         float accuracity = 0;
         if(tries != 0)
         {
@@ -134,8 +130,5 @@ public class keyInput : MonoBehaviour
         }
 
         accuracityText.text = accuracity.ToString("F0") + "%";
-
-        //TODO: fer les coses de quan algú guanya
-        Debug.Log("Wiiiin!!!!");
     }
 }
