@@ -197,10 +197,14 @@ public class TextUIGenerator : MonoBehaviour
         //screenWidth = Screen.width / 4;
         //screenHeight = Screen.height / 4;
 
-        screenWidth = Resources.Load<Sprite>("fotos/" + nN).textureRect.width;
-        screenHeight = Resources.Load<Sprite>("fotos/" + nN).textureRect.height;
+        float ratio;
 
-        img.rectTransform.sizeDelta = new Vector2(screenWidth * (100 / (Screen.width * 0.25f)), screenHeight * (100 / (Screen.height * 0.25f)));
+        ratio = Resources.Load<Sprite>("fotos/" + nN).textureRect.width / Resources.Load<Sprite>("fotos/" + nN).textureRect.height;
+
+        screenWidth = Resources.Load<Sprite>("fotos/" + nN).textureRect.width * (100 / (Screen.width * 0.25f));
+        screenHeight = (screenHeight / ratio) * (100 / (Screen.height * 0.25f));
+
+        img.rectTransform.sizeDelta = new Vector2(screenWidth, screenHeight);
 
         Debug.Log(Screen.width);
         Debug.Log(Screen.height);
