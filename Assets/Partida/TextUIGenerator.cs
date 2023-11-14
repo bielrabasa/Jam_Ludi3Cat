@@ -11,8 +11,8 @@ public class TextUIGenerator : MonoBehaviour
    [SerializeField] GameObject buttonPrefab;
     public GameObject canvas;
 
-    Text textButton;
-    [SerializeField] Text link;
+    TextMeshProUGUI textButton;
+    [SerializeField]TextMeshProUGUI link;
 
     public GameObject[] listOfLetters;
 
@@ -35,7 +35,7 @@ public class TextUIGenerator : MonoBehaviour
         //Screen info
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
-        Vector2 spacing = new Vector2(letterSize.x/10f, letterSize.y/6f);
+        Vector2 spacing = new Vector2(letterSize.x/5f, letterSize.y/3f);
 
         //
         int lettersPerRow = (int)((screenWidth - (screenWidth * 0.1f * 2)) / (letterSize.x + spacing.x));
@@ -70,7 +70,7 @@ public class TextUIGenerator : MonoBehaviour
                 //Instantiate
                 GameObject button = Instantiate(buttonPrefab);
                 button.transform.SetParent(canvas.transform);
-                button.GetComponentInChildren<Text>().text =  currentPrinting[l].ToString();
+                button.GetComponentInChildren<TextMeshProUGUI>().text =  currentPrinting[l].ToString();
 
                 //Position
                 button.transform.position = cursor;
@@ -88,7 +88,7 @@ public class TextUIGenerator : MonoBehaviour
         //Deactivate spaces
         foreach (GameObject o in listOfLetters)
         {
-            textButton = o.GetComponentInChildren<Text>();
+            textButton = o.GetComponentInChildren<TextMeshProUGUI>();
 
             if (textButton.text == " ")
             {
@@ -104,7 +104,7 @@ public class TextUIGenerator : MonoBehaviour
         int i = 0;
         foreach(GameObject o in listOfLetters)
         {
-            textButton = o.GetComponentInChildren<Text>();
+            textButton = o.GetComponentInChildren<TextMeshProUGUI>();
             textButton.text = textSymbol[i].ToString();
             i++;
         }
@@ -120,7 +120,7 @@ public class TextUIGenerator : MonoBehaviour
         foreach (GameObject o in listOfLetters)
         {
             o.GetComponent<Image>().color = cSelect.get_not_selected();
-            o.GetComponentInChildren<Text>().color = cSelect.get_not_text_selected();
+            o.GetComponentInChildren<TextMeshProUGUI>().color = cSelect.get_not_text_selected();
 
             if (o == me)
             {
@@ -128,7 +128,7 @@ public class TextUIGenerator : MonoBehaviour
 
             }
 
-            if(o.GetComponentInChildren<Text>().text == me.GetComponentInChildren<Text>().text)
+            if(o.GetComponentInChildren<TextMeshProUGUI>().text == me.GetComponentInChildren<TextMeshProUGUI>().text)
             {
                 o.GetComponent<Image>().color = cSelect.get_similar_selected();
             }
@@ -138,7 +138,7 @@ public class TextUIGenerator : MonoBehaviour
         }
 
         me.GetComponent<Image>().color = cSelect.get_selected();
-        me.GetComponentInChildren<Text>().color = cSelect.get_text_selected();
+        me.GetComponentInChildren<TextMeshProUGUI>().color = cSelect.get_text_selected();
     }
 
     public void SetPos(int pos)
@@ -178,14 +178,14 @@ public class TextUIGenerator : MonoBehaviour
         foreach (GameObject obj in listOfLetters)
         {
             obj.GetComponent<Image>().color = cSelect.get_background();
-            obj.GetComponentInChildren<Text>().color = cSelect.get_text();
+            obj.GetComponentInChildren<TextMeshProUGUI>().color = cSelect.get_text();
         }
     }
 
     public void SetImage()
     {
         Image img = GameObject.Find("Portada").GetComponent<Image>();
-        Text date = GameObject.Find("DateNews").GetComponent<Text>();
+        TextMeshProUGUI date = GameObject.Find("DateNews").GetComponent<TextMeshProUGUI>();
 
         NewsAsset n = FindObjectOfType<gameInfo>().news;
         Sprite photo = Resources.Load<Sprite>("fotos/" + n.NumNews);

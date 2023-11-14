@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ColorsSelect : MonoBehaviour
 {
@@ -121,11 +122,11 @@ public class ColorsSelect : MonoBehaviour
         FindObjectOfType<Camera>().backgroundColor = get_game_background();
 
         //Reset menu buttons text
-        foreach(Text t in GameObject.Find("Menus").GetComponentsInChildren<Text>())
+        foreach(TextMeshProUGUI t in GameObject.Find("Menus").GetComponentsInChildren<TextMeshProUGUI>())
         {
             t.color = get_none();
         }
 
-        GameObject.Find("DateNews").GetComponent<Text>().color = get_background();
+        GameObject.Find("DateNews").GetComponent<TextMeshProUGUI>().color = get_background();
     }
 }

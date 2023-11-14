@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VirtualKeyBoard : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class VirtualKeyBoard : MonoBehaviour
         }
 
         //Change key letter color
-        GetComponentInChildren<Text>().color = cSelect.get_text();
+        GetComponentInChildren<TextMeshProUGUI>().color = cSelect.get_text();
     }
 
     public void ChangeColorKeyBoard(GameObject g)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class keyInput : MonoBehaviour
 {
@@ -114,10 +114,10 @@ public class keyInput : MonoBehaviour
         int hints = gameManager.numberOfHints;
         float nleters = gameManager.numberLetters;
 
-        Text triesText = GameObject.Find("TriesText").GetComponent<Text>();
-        Text errorText = GameObject.Find("ErrorText").GetComponent<Text>();
-        Text hintsText = GameObject.Find("HintsText").GetComponent<Text>();
-        Text accuracityText = GameObject.Find("AccuracityText").GetComponent<Text>();
+        TextMeshProUGUI triesText = GameObject.Find("TriesText").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI errorText = GameObject.Find("ErrorText").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI hintsText = GameObject.Find("HintsText").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI accuracityText = GameObject.Find("AccuracityText").GetComponent<TextMeshProUGUI>();
 
         triesText.text = tries.ToString();
         errorText.text = errors.ToString();
