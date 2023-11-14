@@ -20,8 +20,8 @@ public class ColorsSelect : MonoBehaviour
     Color text = new Color(1f, 1f, 1f, 1f);                         //Keyboard font color
     Color text_dark = new Color(0.1f, 0.1f, 0.1f, 1f);                    //Keyboard font color darkmode
 
-    Color notappears = new Color(0f, 0f, 0f, 1f); //TODO: Other colors maybe?
-    Color notappears_dark = new Color(1f, 1f, 1f, 1f);              //Keyboard clicked letter not in frase darkmode
+    Color notappears = new Color(0.50f, 0.50f, 0.50f, 1f);              //Keyboard clicked letter not in frase darkmode
+    Color notappears_dark = new Color(0.50f, 0.50f, 0.50f, 1f); 	    //TODO: Other colors maybe?
 
     Color correct = new Color(0.2745f, 0.8235f, 0.2745f, 1);        //Keyboard letter correct
     Color correct_dalt = new Color(1f, 0.8549f, 0.149f, 1);         //Keyboard letter correct daltonic
@@ -61,7 +61,7 @@ public class ColorsSelect : MonoBehaviour
     }
 
     public Color get_notappears() {
-        return get_background();// darkmode.isOn ? notappears_dark : notappears;
+        return darkmode.isOn ? notappears_dark : notappears;
     }
     public Color get_correct()
     {
@@ -125,8 +125,12 @@ public class ColorsSelect : MonoBehaviour
         foreach(TextMeshProUGUI t in GameObject.Find("Menus").GetComponentsInChildren<TextMeshProUGUI>())
         {
             t.color = get_none();
+            t.color = get_background();
         }
-
+        foreach (Image i in GameObject.Find("Menus").GetComponentsInChildren<Image>())
+        {
+            i.color = get_none();
+        }
         GameObject.Find("DateNews").GetComponent<TextMeshProUGUI>().color = get_background();
     }
 }
