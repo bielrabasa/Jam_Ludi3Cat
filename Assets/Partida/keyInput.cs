@@ -70,9 +70,9 @@ public class keyInput : MonoBehaviour
     //Select next possible position
     void UpdatePos()
     {
-        int startingPos = lookingPos;
+        if (lookingPos == -1) return;
 
-        for(int i = startingPos + 1; i != lookingPos; i++)
+        for(int i = lookingPos + 1; i != lookingPos; i++)
         {
             if (i >= maxPos) i = 0;
 
