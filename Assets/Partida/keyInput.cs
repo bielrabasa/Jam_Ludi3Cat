@@ -70,12 +70,19 @@ public class keyInput : MonoBehaviour
     //Select next possible position
     void UpdatePos()
     {
-        if (lookingPos == -1) return;
+        if (lookingPos == -1) {
+            lookingPos = 0;
+
+            if (gameManager.positionIsEmpty(0))
+            {
+                textUIG.SetPos(0);
+                return;
+            }
+        }
 
         for(int i = lookingPos + 1; i != lookingPos; i++)
         {
             if (i >= maxPos) i = 0;
-
            
             if (gameManager.positionIsEmpty(i))
             {
