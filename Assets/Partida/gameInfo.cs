@@ -13,7 +13,7 @@ public enum letterState
 public class gameInfo : MonoBehaviour
 {
     [HideInInspector] public const int NUM_LETTERS = 26;
-    const string SYMBOLS = "★✤✿♠♣♥♦☁☀▶∎☻◈〓✚⦿⊕☗✈◐☂♜♞♚♛☎";
+    const string SYMBOLS = "ȴ∑♠♣♥♦≈Ω∏Жϴ∞ωɷ≡Δ|ξ§Ψ‡Γ♫↕ς";
 
     [SerializeField] string solution;        //Hóla qüe, tAL?
     public string cleanSolution;   //hola que, tal?
