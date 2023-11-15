@@ -67,6 +67,7 @@ public class gameInfo : MonoBehaviour
         cleanSolution = "";
         shuffledSymbols = "";
         numberOfTries = 0;
+        numberOfErrors = 0;
         numberOfHints = 0;
         news = new NewsAsset();
 
@@ -155,7 +156,14 @@ public class gameInfo : MonoBehaviour
     {
         if (pos >= cleanSolution.Length || pos < 0)
         {
-            Debug.LogError("Letter checking failed: position out of bounds.");
+            //Debug.LogError("Letter checking failed: position out of bounds.");
+            return false;
+        }
+
+        //Check if not repeating
+        letterState ls = letters[getLetterNumber(c)];
+        if (!isLetter(cleanSolution[pos]) || ls == letterState.CORRECT || ls == letterState.NOTAPPEARS)
+        {
             return false;
         }
 
@@ -172,7 +180,7 @@ public class gameInfo : MonoBehaviour
         numberOfErrors++;
 
         //Not correct
-        if (letters[getLetterNumber(c)] == letterState.NONE)
+        if (ls == letterState.NONE)
         {
             if (cleanSolution.Contains(c))
             {

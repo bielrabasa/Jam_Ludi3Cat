@@ -11,19 +11,21 @@ public class keyInput : MonoBehaviour
     int maxPos;
 
     GameObject stats;
-
     GameObject howToPlay;
 
     void Start()
     {
         gameManager = FindObjectOfType<gameInfo>();
         textUIG = FindObjectOfType<TextUIGenerator>();
-
         howToPlay = GameObject.Find("HowToPlay");
-
         stats = GameObject.Find("Stats");
         stats.SetActive(false);
 
+        StartGame();
+    }
+
+    public void StartGame()
+    {
         lookingPos = -1; //-1 for not focused
         maxPos = gameManager.getState().Length;
 
@@ -34,17 +36,15 @@ public class keyInput : MonoBehaviour
     void Update()
     {
         //Keyboard 
-        if(!howToPlay.activeInHierarchy)
+        if (howToPlay.activeInHierarchy) return;
+            
+        for (int i = 97; i <= 122; i++)
         {
-            for (int i = 97; i <= 122; i++)
+            if (Input.GetKeyDown((KeyCode)i))
             {
-                if (Input.GetKeyDown((KeyCode)i))
-                {
-                    CheckLetter((char)i);
-                }
+                CheckLetter((char)i);
             }
         }
-
     }
 
     void UpdateScreen()
