@@ -71,9 +71,10 @@ public class ColorsSelect : MonoBehaviour
     {
         return daltonic.isOn ? possible_dalt : possible;
     }
-    public Color get_background()
+    public Color get_background(bool oposite = false)
     {
-        return darkmode.isOn ? background_dark : background;
+        if(oposite) return darkmode.isOn? background : background_dark;
+        else        return darkmode.isOn ? background_dark : background;
     }
     public Color get_game_background()
     {
@@ -131,6 +132,6 @@ public class ColorsSelect : MonoBehaviour
         {
             i.color = get_none();
         }
-        GameObject.Find("DateNews").GetComponent<TextMeshProUGUI>().color = get_background();
+        GameObject.Find("DateNews").GetComponent<TextMeshProUGUI>().color = get_background(true);
     }
 }
