@@ -12,14 +12,17 @@ public class keyInput : MonoBehaviour
 
     GameObject stats;
     GameObject howToPlay;
+    GameObject optionsMenu;
 
     void Start()
     {
         gameManager = FindObjectOfType<gameInfo>();
         textUIG = FindObjectOfType<TextUIGenerator>();
         howToPlay = GameObject.Find("HowToPlay");
+        optionsMenu = GameObject.Find("Options");
         stats = GameObject.Find("Stats");
         stats.SetActive(false);
+        optionsMenu.SetActive(false);
 
         StartGame();
     }
@@ -36,7 +39,7 @@ public class keyInput : MonoBehaviour
     void Update()
     {
         //Keyboard 
-        if (howToPlay.activeInHierarchy) return;
+        if (howToPlay.activeInHierarchy || optionsMenu.activeInHierarchy) return;
             
         for (int i = 97; i <= 122; i++)
         {
