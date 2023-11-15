@@ -131,6 +131,12 @@ public class gameInfo : MonoBehaviour
 
     public bool positionIsEmpty(int p)
     {
+        if (p >= cleanSolution.Length || p < 0)
+        {
+            //Debug.LogError("Letter checking failed: position out of bounds.");
+            return false;
+        }
+
         //If is letter and position is not correct, return true
         return isLetter(cleanSolution[p]) && letters[getLetterNumber(cleanSolution[p])] != letterState.CORRECT;
     }
